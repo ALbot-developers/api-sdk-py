@@ -18,7 +18,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestTrustedRoles:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_update(self, client: AlbotAPISDK) -> None:
         trusted_role = client.guilds.trusted_roles.update(
@@ -26,7 +26,7 @@ class TestTrustedRoles:
         )
         assert_matches_type(PlainAPIResponse, trusted_role, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_update_with_all_params(self, client: AlbotAPISDK) -> None:
         trusted_role = client.guilds.trusted_roles.update(
@@ -36,7 +36,7 @@ class TestTrustedRoles:
         )
         assert_matches_type(PlainAPIResponse, trusted_role, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_update(self, client: AlbotAPISDK) -> None:
         response = client.guilds.trusted_roles.with_raw_response.update(
@@ -48,7 +48,7 @@ class TestTrustedRoles:
         trusted_role = response.parse()
         assert_matches_type(PlainAPIResponse, trusted_role, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_update(self, client: AlbotAPISDK) -> None:
         with client.guilds.trusted_roles.with_streaming_response.update(
@@ -62,7 +62,7 @@ class TestTrustedRoles:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_list(self, client: AlbotAPISDK) -> None:
         trusted_role = client.guilds.trusted_roles.list(
@@ -70,7 +70,7 @@ class TestTrustedRoles:
         )
         assert_matches_type(TrustedRoleListResponse, trusted_role, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: AlbotAPISDK) -> None:
         response = client.guilds.trusted_roles.with_raw_response.list(
@@ -82,7 +82,7 @@ class TestTrustedRoles:
         trusted_role = response.parse()
         assert_matches_type(TrustedRoleListResponse, trusted_role, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: AlbotAPISDK) -> None:
         with client.guilds.trusted_roles.with_streaming_response.list(
@@ -102,7 +102,7 @@ class TestAsyncTrustedRoles:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_update(self, async_client: AsyncAlbotAPISDK) -> None:
         trusted_role = await async_client.guilds.trusted_roles.update(
@@ -110,7 +110,7 @@ class TestAsyncTrustedRoles:
         )
         assert_matches_type(PlainAPIResponse, trusted_role, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncAlbotAPISDK) -> None:
         trusted_role = await async_client.guilds.trusted_roles.update(
@@ -120,7 +120,7 @@ class TestAsyncTrustedRoles:
         )
         assert_matches_type(PlainAPIResponse, trusted_role, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncAlbotAPISDK) -> None:
         response = await async_client.guilds.trusted_roles.with_raw_response.update(
@@ -132,7 +132,7 @@ class TestAsyncTrustedRoles:
         trusted_role = await response.parse()
         assert_matches_type(PlainAPIResponse, trusted_role, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncAlbotAPISDK) -> None:
         async with async_client.guilds.trusted_roles.with_streaming_response.update(
@@ -146,7 +146,7 @@ class TestAsyncTrustedRoles:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_list(self, async_client: AsyncAlbotAPISDK) -> None:
         trusted_role = await async_client.guilds.trusted_roles.list(
@@ -154,7 +154,7 @@ class TestAsyncTrustedRoles:
         )
         assert_matches_type(TrustedRoleListResponse, trusted_role, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncAlbotAPISDK) -> None:
         response = await async_client.guilds.trusted_roles.with_raw_response.list(
@@ -166,7 +166,7 @@ class TestAsyncTrustedRoles:
         trusted_role = await response.parse()
         assert_matches_type(TrustedRoleListResponse, trusted_role, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncAlbotAPISDK) -> None:
         async with async_client.guilds.trusted_roles.with_streaming_response.list(

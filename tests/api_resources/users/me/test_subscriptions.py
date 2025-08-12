@@ -17,13 +17,13 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestSubscriptions:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_list(self, client: AlbotAPISDK) -> None:
         subscription = client.users.me.subscriptions.list()
         assert_matches_type(ListSubscriptions, subscription, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: AlbotAPISDK) -> None:
         response = client.users.me.subscriptions.with_raw_response.list()
@@ -33,7 +33,7 @@ class TestSubscriptions:
         subscription = response.parse()
         assert_matches_type(ListSubscriptions, subscription, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: AlbotAPISDK) -> None:
         with client.users.me.subscriptions.with_streaming_response.list() as response:
@@ -45,7 +45,7 @@ class TestSubscriptions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_activate(self, client: AlbotAPISDK) -> None:
         subscription = client.users.me.subscriptions.activate(
@@ -54,7 +54,7 @@ class TestSubscriptions:
         )
         assert_matches_type(PlainAPIResponse, subscription, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_activate(self, client: AlbotAPISDK) -> None:
         response = client.users.me.subscriptions.with_raw_response.activate(
@@ -67,7 +67,7 @@ class TestSubscriptions:
         subscription = response.parse()
         assert_matches_type(PlainAPIResponse, subscription, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_activate(self, client: AlbotAPISDK) -> None:
         with client.users.me.subscriptions.with_streaming_response.activate(
@@ -82,7 +82,7 @@ class TestSubscriptions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_activate(self, client: AlbotAPISDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `sub_id` but received ''"):
@@ -91,7 +91,7 @@ class TestSubscriptions:
                 guild_id=0,
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_cancel(self, client: AlbotAPISDK) -> None:
         subscription = client.users.me.subscriptions.cancel(
@@ -99,7 +99,7 @@ class TestSubscriptions:
         )
         assert_matches_type(PlainAPIResponse, subscription, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_cancel(self, client: AlbotAPISDK) -> None:
         response = client.users.me.subscriptions.with_raw_response.cancel(
@@ -111,7 +111,7 @@ class TestSubscriptions:
         subscription = response.parse()
         assert_matches_type(PlainAPIResponse, subscription, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_cancel(self, client: AlbotAPISDK) -> None:
         with client.users.me.subscriptions.with_streaming_response.cancel(
@@ -125,7 +125,7 @@ class TestSubscriptions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_cancel(self, client: AlbotAPISDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `sub_id` but received ''"):
@@ -133,7 +133,7 @@ class TestSubscriptions:
                 "",
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_renew(self, client: AlbotAPISDK) -> None:
         subscription = client.users.me.subscriptions.renew(
@@ -142,7 +142,7 @@ class TestSubscriptions:
         )
         assert_matches_type(PlainAPIResponse, subscription, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_renew(self, client: AlbotAPISDK) -> None:
         response = client.users.me.subscriptions.with_raw_response.renew(
@@ -155,7 +155,7 @@ class TestSubscriptions:
         subscription = response.parse()
         assert_matches_type(PlainAPIResponse, subscription, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_renew(self, client: AlbotAPISDK) -> None:
         with client.users.me.subscriptions.with_streaming_response.renew(
@@ -170,7 +170,7 @@ class TestSubscriptions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_renew(self, client: AlbotAPISDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `sub_id` but received ''"):
@@ -185,13 +185,13 @@ class TestAsyncSubscriptions:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_list(self, async_client: AsyncAlbotAPISDK) -> None:
         subscription = await async_client.users.me.subscriptions.list()
         assert_matches_type(ListSubscriptions, subscription, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncAlbotAPISDK) -> None:
         response = await async_client.users.me.subscriptions.with_raw_response.list()
@@ -201,7 +201,7 @@ class TestAsyncSubscriptions:
         subscription = await response.parse()
         assert_matches_type(ListSubscriptions, subscription, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncAlbotAPISDK) -> None:
         async with async_client.users.me.subscriptions.with_streaming_response.list() as response:
@@ -213,7 +213,7 @@ class TestAsyncSubscriptions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_activate(self, async_client: AsyncAlbotAPISDK) -> None:
         subscription = await async_client.users.me.subscriptions.activate(
@@ -222,7 +222,7 @@ class TestAsyncSubscriptions:
         )
         assert_matches_type(PlainAPIResponse, subscription, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_activate(self, async_client: AsyncAlbotAPISDK) -> None:
         response = await async_client.users.me.subscriptions.with_raw_response.activate(
@@ -235,7 +235,7 @@ class TestAsyncSubscriptions:
         subscription = await response.parse()
         assert_matches_type(PlainAPIResponse, subscription, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_activate(self, async_client: AsyncAlbotAPISDK) -> None:
         async with async_client.users.me.subscriptions.with_streaming_response.activate(
@@ -250,7 +250,7 @@ class TestAsyncSubscriptions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_activate(self, async_client: AsyncAlbotAPISDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `sub_id` but received ''"):
@@ -259,7 +259,7 @@ class TestAsyncSubscriptions:
                 guild_id=0,
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_cancel(self, async_client: AsyncAlbotAPISDK) -> None:
         subscription = await async_client.users.me.subscriptions.cancel(
@@ -267,7 +267,7 @@ class TestAsyncSubscriptions:
         )
         assert_matches_type(PlainAPIResponse, subscription, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_cancel(self, async_client: AsyncAlbotAPISDK) -> None:
         response = await async_client.users.me.subscriptions.with_raw_response.cancel(
@@ -279,7 +279,7 @@ class TestAsyncSubscriptions:
         subscription = await response.parse()
         assert_matches_type(PlainAPIResponse, subscription, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_cancel(self, async_client: AsyncAlbotAPISDK) -> None:
         async with async_client.users.me.subscriptions.with_streaming_response.cancel(
@@ -293,7 +293,7 @@ class TestAsyncSubscriptions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_cancel(self, async_client: AsyncAlbotAPISDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `sub_id` but received ''"):
@@ -301,7 +301,7 @@ class TestAsyncSubscriptions:
                 "",
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_renew(self, async_client: AsyncAlbotAPISDK) -> None:
         subscription = await async_client.users.me.subscriptions.renew(
@@ -310,7 +310,7 @@ class TestAsyncSubscriptions:
         )
         assert_matches_type(PlainAPIResponse, subscription, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_renew(self, async_client: AsyncAlbotAPISDK) -> None:
         response = await async_client.users.me.subscriptions.with_raw_response.renew(
@@ -323,7 +323,7 @@ class TestAsyncSubscriptions:
         subscription = await response.parse()
         assert_matches_type(PlainAPIResponse, subscription, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_renew(self, async_client: AsyncAlbotAPISDK) -> None:
         async with async_client.users.me.subscriptions.with_streaming_response.renew(
@@ -338,7 +338,7 @@ class TestAsyncSubscriptions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_renew(self, async_client: AsyncAlbotAPISDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `sub_id` but received ''"):
