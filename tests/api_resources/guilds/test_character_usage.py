@@ -18,7 +18,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestCharacterUsage:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_retrieve(self, client: AlbotAPISDK) -> None:
         character_usage = client.guilds.character_usage.retrieve(
@@ -26,7 +26,7 @@ class TestCharacterUsage:
         )
         assert_matches_type(CharacterUsageRetrieveResponse, character_usage, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_retrieve(self, client: AlbotAPISDK) -> None:
         response = client.guilds.character_usage.with_raw_response.retrieve(
@@ -38,7 +38,7 @@ class TestCharacterUsage:
         character_usage = response.parse()
         assert_matches_type(CharacterUsageRetrieveResponse, character_usage, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_retrieve(self, client: AlbotAPISDK) -> None:
         with client.guilds.character_usage.with_streaming_response.retrieve(
@@ -52,7 +52,7 @@ class TestCharacterUsage:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_update(self, client: AlbotAPISDK) -> None:
         character_usage = client.guilds.character_usage.update(
@@ -60,7 +60,7 @@ class TestCharacterUsage:
         )
         assert_matches_type(PlainAPIResponse, character_usage, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_update_with_all_params(self, client: AlbotAPISDK) -> None:
         character_usage = client.guilds.character_usage.update(
@@ -76,7 +76,7 @@ class TestCharacterUsage:
         )
         assert_matches_type(PlainAPIResponse, character_usage, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_update(self, client: AlbotAPISDK) -> None:
         response = client.guilds.character_usage.with_raw_response.update(
@@ -88,7 +88,7 @@ class TestCharacterUsage:
         character_usage = response.parse()
         assert_matches_type(PlainAPIResponse, character_usage, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_update(self, client: AlbotAPISDK) -> None:
         with client.guilds.character_usage.with_streaming_response.update(
@@ -108,7 +108,7 @@ class TestAsyncCharacterUsage:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncAlbotAPISDK) -> None:
         character_usage = await async_client.guilds.character_usage.retrieve(
@@ -116,7 +116,7 @@ class TestAsyncCharacterUsage:
         )
         assert_matches_type(CharacterUsageRetrieveResponse, character_usage, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncAlbotAPISDK) -> None:
         response = await async_client.guilds.character_usage.with_raw_response.retrieve(
@@ -128,7 +128,7 @@ class TestAsyncCharacterUsage:
         character_usage = await response.parse()
         assert_matches_type(CharacterUsageRetrieveResponse, character_usage, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncAlbotAPISDK) -> None:
         async with async_client.guilds.character_usage.with_streaming_response.retrieve(
@@ -142,7 +142,7 @@ class TestAsyncCharacterUsage:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_update(self, async_client: AsyncAlbotAPISDK) -> None:
         character_usage = await async_client.guilds.character_usage.update(
@@ -150,7 +150,7 @@ class TestAsyncCharacterUsage:
         )
         assert_matches_type(PlainAPIResponse, character_usage, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncAlbotAPISDK) -> None:
         character_usage = await async_client.guilds.character_usage.update(
@@ -166,7 +166,7 @@ class TestAsyncCharacterUsage:
         )
         assert_matches_type(PlainAPIResponse, character_usage, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncAlbotAPISDK) -> None:
         response = await async_client.guilds.character_usage.with_raw_response.update(
@@ -178,7 +178,7 @@ class TestAsyncCharacterUsage:
         character_usage = await response.parse()
         assert_matches_type(PlainAPIResponse, character_usage, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncAlbotAPISDK) -> None:
         async with async_client.guilds.character_usage.with_streaming_response.update(
