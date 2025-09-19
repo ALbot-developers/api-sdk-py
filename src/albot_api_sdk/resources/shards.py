@@ -8,7 +8,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import shard_list_params, shard_post_metrics_params, shard_get_connection_commands_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -50,13 +50,13 @@ class ShardsResource(SyncAPIResource):
     def list(
         self,
         *,
-        status: Literal["online", "offline", "all"] | NotGiven = NOT_GIVEN,
+        status: Literal["online", "offline", "all"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ShardListResponse:
         """
         Index
@@ -90,7 +90,7 @@ class ShardsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ShardAssignResponse:
         """Assign Shard"""
         return self._get(
@@ -105,13 +105,13 @@ class ShardsResource(SyncAPIResource):
         self,
         shard_id: int,
         *,
-        changes_only: bool | NotGiven = NOT_GIVEN,
+        changes_only: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ShardGetConnectionCommandsResponse:
         """
         Get Connection Commands
@@ -144,14 +144,14 @@ class ShardsResource(SyncAPIResource):
         self,
         shard_id: int,
         *,
-        connected: Optional[int] | NotGiven = NOT_GIVEN,
-        guilds: Optional[int] | NotGiven = NOT_GIVEN,
+        connected: Optional[int] | Omit = omit,
+        guilds: Optional[int] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlainAPIResponse:
         """
         Post Metrics
@@ -189,7 +189,7 @@ class ShardsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlainAPIResponse:
         """
         Release Shard
@@ -235,13 +235,13 @@ class AsyncShardsResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        status: Literal["online", "offline", "all"] | NotGiven = NOT_GIVEN,
+        status: Literal["online", "offline", "all"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ShardListResponse:
         """
         Index
@@ -275,7 +275,7 @@ class AsyncShardsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ShardAssignResponse:
         """Assign Shard"""
         return await self._get(
@@ -290,13 +290,13 @@ class AsyncShardsResource(AsyncAPIResource):
         self,
         shard_id: int,
         *,
-        changes_only: bool | NotGiven = NOT_GIVEN,
+        changes_only: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ShardGetConnectionCommandsResponse:
         """
         Get Connection Commands
@@ -329,14 +329,14 @@ class AsyncShardsResource(AsyncAPIResource):
         self,
         shard_id: int,
         *,
-        connected: Optional[int] | NotGiven = NOT_GIVEN,
-        guilds: Optional[int] | NotGiven = NOT_GIVEN,
+        connected: Optional[int] | Omit = omit,
+        guilds: Optional[int] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlainAPIResponse:
         """
         Post Metrics
@@ -374,7 +374,7 @@ class AsyncShardsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlainAPIResponse:
         """
         Release Shard

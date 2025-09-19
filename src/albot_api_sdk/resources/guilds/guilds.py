@@ -15,7 +15,7 @@ from .dict import (
     AsyncDictResourceWithStreamingResponse,
 )
 from ...types import guild_create_quick_report_params, guild_create_connection_states_params
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from .settings import (
     SettingsResource,
@@ -126,7 +126,7 @@ class GuildsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlainAPIResponse:
         """
         Create Guild Resources
@@ -157,7 +157,7 @@ class GuildsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlainAPIResponse:
         """
         Delete Guild Resources
@@ -185,18 +185,18 @@ class GuildsResource(SyncAPIResource):
         *,
         tc_id: int,
         vc_id: int,
-        character_limit: Optional[int] | NotGiven = NOT_GIVEN,
-        lang: Optional[str] | NotGiven = NOT_GIVEN,
-        read_guild: Optional[bool] | NotGiven = NOT_GIVEN,
-        read_name: Optional[bool] | NotGiven = NOT_GIVEN,
-        speech_speed: Optional[float] | NotGiven = NOT_GIVEN,
-        translate: Optional[bool] | NotGiven = NOT_GIVEN,
+        character_limit: Optional[int] | Omit = omit,
+        lang: Optional[str] | Omit = omit,
+        read_guild: Optional[bool] | Omit = omit,
+        read_name: Optional[bool] | Omit = omit,
+        speech_speed: Optional[float] | Omit = omit,
+        translate: Optional[bool] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> GuildCreateConnectionStatesResponse:
         """
         Create Connection States Api
@@ -243,7 +243,7 @@ class GuildsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlainAPIResponse:
         """
         Post Quick Report
@@ -284,7 +284,7 @@ class GuildsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ListSubscriptions:
         """
         List Guild Subscriptions Api
@@ -360,7 +360,7 @@ class AsyncGuildsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlainAPIResponse:
         """
         Create Guild Resources
@@ -391,7 +391,7 @@ class AsyncGuildsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlainAPIResponse:
         """
         Delete Guild Resources
@@ -419,18 +419,18 @@ class AsyncGuildsResource(AsyncAPIResource):
         *,
         tc_id: int,
         vc_id: int,
-        character_limit: Optional[int] | NotGiven = NOT_GIVEN,
-        lang: Optional[str] | NotGiven = NOT_GIVEN,
-        read_guild: Optional[bool] | NotGiven = NOT_GIVEN,
-        read_name: Optional[bool] | NotGiven = NOT_GIVEN,
-        speech_speed: Optional[float] | NotGiven = NOT_GIVEN,
-        translate: Optional[bool] | NotGiven = NOT_GIVEN,
+        character_limit: Optional[int] | Omit = omit,
+        lang: Optional[str] | Omit = omit,
+        read_guild: Optional[bool] | Omit = omit,
+        read_name: Optional[bool] | Omit = omit,
+        speech_speed: Optional[float] | Omit = omit,
+        translate: Optional[bool] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> GuildCreateConnectionStatesResponse:
         """
         Create Connection States Api
@@ -477,7 +477,7 @@ class AsyncGuildsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlainAPIResponse:
         """
         Post Quick Report
@@ -518,7 +518,7 @@ class AsyncGuildsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ListSubscriptions:
         """
         List Guild Subscriptions Api
