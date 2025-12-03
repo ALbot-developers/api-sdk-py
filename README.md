@@ -86,6 +86,7 @@ pip install 'albot_api_sdk[aiohttp] @ git+ssh://git@github.com/ALbot-developers/
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
 
 ```python
+import os
 import asyncio
 from albot_api_sdk import DefaultAioHttpClient
 from albot_api_sdk import AsyncAlbotAPISDK
@@ -93,7 +94,7 @@ from albot_api_sdk import AsyncAlbotAPISDK
 
 async def main() -> None:
     async with AsyncAlbotAPISDK(
-        api_key="My API Key",
+        api_key=os.environ.get("ALBOT_API_SDK_API_KEY"),  # This is the default and can be omitted
         http_client=DefaultAioHttpClient(),
     ) as client:
         url_api_response = await client.oauth2.redirect(
