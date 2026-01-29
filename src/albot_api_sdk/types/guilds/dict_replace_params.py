@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
+from typing import Dict
 from typing_extensions import Required, TypedDict
 
 __all__ = ["DictReplaceParams"]
 
 
 class DictReplaceParams(TypedDict, total=False):
-    dict: Required[object]
+    dict: Required[Dict[str, object]]
