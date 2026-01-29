@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Union, Optional
+from typing import Dict, List, Optional
 from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
@@ -18,13 +18,13 @@ class DataConnectionStates(BaseModel):
 
     custom_voice: Optional[str] = None
 
-    dict_: object = FieldInfo(alias="dict")
+    dict_: Dict[str, object] = FieldInfo(alias="dict")
 
     dict_keys: List[object]
 
     guild_id: int
 
-    language_code: Union[Literal["auto"], str]
+    language_code: Literal["auto"]
 
     read_guild: bool
 
