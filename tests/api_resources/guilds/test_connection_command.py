@@ -18,7 +18,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestConnectionCommand:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_retrieve(self, client: AlbotAPISDK) -> None:
         connection_command = client.guilds.connection_command.retrieve(
@@ -26,7 +26,7 @@ class TestConnectionCommand:
         )
         assert_matches_type(ConnectionCommandRetrieveResponse, connection_command, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_retrieve(self, client: AlbotAPISDK) -> None:
         response = client.guilds.connection_command.with_raw_response.retrieve(
@@ -38,7 +38,7 @@ class TestConnectionCommand:
         connection_command = response.parse()
         assert_matches_type(ConnectionCommandRetrieveResponse, connection_command, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_retrieve(self, client: AlbotAPISDK) -> None:
         with client.guilds.connection_command.with_streaming_response.retrieve(
@@ -52,7 +52,7 @@ class TestConnectionCommand:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_update(self, client: AlbotAPISDK) -> None:
         connection_command = client.guilds.connection_command.update(
@@ -61,7 +61,7 @@ class TestConnectionCommand:
         )
         assert_matches_type(PlainAPIResponse, connection_command, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_update(self, client: AlbotAPISDK) -> None:
         response = client.guilds.connection_command.with_raw_response.update(
@@ -74,7 +74,7 @@ class TestConnectionCommand:
         connection_command = response.parse()
         assert_matches_type(PlainAPIResponse, connection_command, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_update(self, client: AlbotAPISDK) -> None:
         with client.guilds.connection_command.with_streaming_response.update(
@@ -95,7 +95,7 @@ class TestAsyncConnectionCommand:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncAlbotAPISDK) -> None:
         connection_command = await async_client.guilds.connection_command.retrieve(
@@ -103,7 +103,7 @@ class TestAsyncConnectionCommand:
         )
         assert_matches_type(ConnectionCommandRetrieveResponse, connection_command, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncAlbotAPISDK) -> None:
         response = await async_client.guilds.connection_command.with_raw_response.retrieve(
@@ -115,7 +115,7 @@ class TestAsyncConnectionCommand:
         connection_command = await response.parse()
         assert_matches_type(ConnectionCommandRetrieveResponse, connection_command, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncAlbotAPISDK) -> None:
         async with async_client.guilds.connection_command.with_streaming_response.retrieve(
@@ -129,7 +129,7 @@ class TestAsyncConnectionCommand:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_update(self, async_client: AsyncAlbotAPISDK) -> None:
         connection_command = await async_client.guilds.connection_command.update(
@@ -138,7 +138,7 @@ class TestAsyncConnectionCommand:
         )
         assert_matches_type(PlainAPIResponse, connection_command, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncAlbotAPISDK) -> None:
         response = await async_client.guilds.connection_command.with_raw_response.update(
@@ -151,7 +151,7 @@ class TestAsyncConnectionCommand:
         connection_command = await response.parse()
         assert_matches_type(PlainAPIResponse, connection_command, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncAlbotAPISDK) -> None:
         async with async_client.guilds.connection_command.with_streaming_response.update(
