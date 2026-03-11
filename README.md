@@ -3,7 +3,7 @@
 <!-- prettier-ignore -->
 [![PyPI version](https://img.shields.io/pypi/v/albot_api_sdk.svg?label=pypi%20(stable))](https://pypi.org/project/albot_api_sdk/)
 
-The Albot API SDK Python library provides convenient access to the Albot API SDK REST API from any Python 3.8+
+The Albot API SDK Python library provides convenient access to the Albot API SDK REST API from any Python 3.9+
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
@@ -16,8 +16,8 @@ The full API of this library can be found in [api.md](api.md).
 ## Installation
 
 ```sh
-# install from this staging repo
-pip install git+ssh://git@github.com/stainless-sdks/albot-api-sdk-python.git
+# install from the production repo
+pip install git+ssh://git@github.com/ALbot-developers/api-sdk-py.git
 ```
 
 > [!NOTE]
@@ -79,13 +79,14 @@ By default, the async client uses `httpx` for HTTP requests. However, for improv
 You can enable this by installing `aiohttp`:
 
 ```sh
-# install from this staging repo
-pip install 'albot_api_sdk[aiohttp] @ git+ssh://git@github.com/stainless-sdks/albot-api-sdk-python.git'
+# install from the production repo
+pip install 'albot_api_sdk[aiohttp] @ git+ssh://git@github.com/ALbot-developers/api-sdk-py.git'
 ```
 
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
 
 ```python
+import os
 import asyncio
 from albot_api_sdk import DefaultAioHttpClient
 from albot_api_sdk import AsyncAlbotAPISDK
@@ -93,7 +94,7 @@ from albot_api_sdk import AsyncAlbotAPISDK
 
 async def main() -> None:
     async with AsyncAlbotAPISDK(
-        api_key="My API Key",
+        api_key=os.environ.get("ALBOT_API_SDK_API_KEY"),  # This is the default and can be omitted
         http_client=DefaultAioHttpClient(),
     ) as client:
         url_api_response = await client.oauth2.redirect(
@@ -268,9 +269,9 @@ oauth2 = response.parse()  # get the object that `oauth2.redirect()` would have 
 print(oauth2.data)
 ```
 
-These methods return an [`APIResponse`](https://github.com/stainless-sdks/albot-api-sdk-python/tree/main/src/albot_api_sdk/_response.py) object.
+These methods return an [`APIResponse`](https://github.com/ALbot-developers/api-sdk-py/tree/main/src/albot_api_sdk/_response.py) object.
 
-The async client returns an [`AsyncAPIResponse`](https://github.com/stainless-sdks/albot-api-sdk-python/tree/main/src/albot_api_sdk/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
+The async client returns an [`AsyncAPIResponse`](https://github.com/ALbot-developers/api-sdk-py/tree/main/src/albot_api_sdk/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
 
 #### `.with_streaming_response`
 
@@ -376,7 +377,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/albot-api-sdk-python/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/ALbot-developers/api-sdk-py/issues) with questions, bugs, or suggestions.
 
 ### Determining the installed version
 
@@ -391,7 +392,7 @@ print(albot_api_sdk.__version__)
 
 ## Requirements
 
-Python 3.8 or higher.
+Python 3.9 or higher.
 
 ## Contributing
 

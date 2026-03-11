@@ -22,13 +22,13 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestShards:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list(self, client: AlbotAPISDK) -> None:
         shard = client.shards.list()
         assert_matches_type(ShardListResponse, shard, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list_with_all_params(self, client: AlbotAPISDK) -> None:
         shard = client.shards.list(
@@ -36,7 +36,7 @@ class TestShards:
         )
         assert_matches_type(ShardListResponse, shard, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: AlbotAPISDK) -> None:
         response = client.shards.with_raw_response.list()
@@ -46,7 +46,7 @@ class TestShards:
         shard = response.parse()
         assert_matches_type(ShardListResponse, shard, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: AlbotAPISDK) -> None:
         with client.shards.with_streaming_response.list() as response:
@@ -58,13 +58,13 @@ class TestShards:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_assign(self, client: AlbotAPISDK) -> None:
         shard = client.shards.assign()
         assert_matches_type(ShardAssignResponse, shard, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_assign(self, client: AlbotAPISDK) -> None:
         response = client.shards.with_raw_response.assign()
@@ -74,7 +74,7 @@ class TestShards:
         shard = response.parse()
         assert_matches_type(ShardAssignResponse, shard, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_assign(self, client: AlbotAPISDK) -> None:
         with client.shards.with_streaming_response.assign() as response:
@@ -86,7 +86,7 @@ class TestShards:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_get_connection_commands(self, client: AlbotAPISDK) -> None:
         shard = client.shards.get_connection_commands(
@@ -94,7 +94,7 @@ class TestShards:
         )
         assert_matches_type(ShardGetConnectionCommandsResponse, shard, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_get_connection_commands_with_all_params(self, client: AlbotAPISDK) -> None:
         shard = client.shards.get_connection_commands(
@@ -103,7 +103,7 @@ class TestShards:
         )
         assert_matches_type(ShardGetConnectionCommandsResponse, shard, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_get_connection_commands(self, client: AlbotAPISDK) -> None:
         response = client.shards.with_raw_response.get_connection_commands(
@@ -115,7 +115,7 @@ class TestShards:
         shard = response.parse()
         assert_matches_type(ShardGetConnectionCommandsResponse, shard, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_get_connection_commands(self, client: AlbotAPISDK) -> None:
         with client.shards.with_streaming_response.get_connection_commands(
@@ -129,7 +129,7 @@ class TestShards:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_post_metrics(self, client: AlbotAPISDK) -> None:
         shard = client.shards.post_metrics(
@@ -137,7 +137,7 @@ class TestShards:
         )
         assert_matches_type(PlainAPIResponse, shard, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_post_metrics_with_all_params(self, client: AlbotAPISDK) -> None:
         shard = client.shards.post_metrics(
@@ -147,7 +147,7 @@ class TestShards:
         )
         assert_matches_type(PlainAPIResponse, shard, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_post_metrics(self, client: AlbotAPISDK) -> None:
         response = client.shards.with_raw_response.post_metrics(
@@ -159,7 +159,7 @@ class TestShards:
         shard = response.parse()
         assert_matches_type(PlainAPIResponse, shard, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_post_metrics(self, client: AlbotAPISDK) -> None:
         with client.shards.with_streaming_response.post_metrics(
@@ -173,7 +173,7 @@ class TestShards:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_release(self, client: AlbotAPISDK) -> None:
         shard = client.shards.release(
@@ -181,7 +181,7 @@ class TestShards:
         )
         assert_matches_type(PlainAPIResponse, shard, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_release(self, client: AlbotAPISDK) -> None:
         response = client.shards.with_raw_response.release(
@@ -193,7 +193,7 @@ class TestShards:
         shard = response.parse()
         assert_matches_type(PlainAPIResponse, shard, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_release(self, client: AlbotAPISDK) -> None:
         with client.shards.with_streaming_response.release(
@@ -213,13 +213,13 @@ class TestAsyncShards:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list(self, async_client: AsyncAlbotAPISDK) -> None:
         shard = await async_client.shards.list()
         assert_matches_type(ShardListResponse, shard, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncAlbotAPISDK) -> None:
         shard = await async_client.shards.list(
@@ -227,7 +227,7 @@ class TestAsyncShards:
         )
         assert_matches_type(ShardListResponse, shard, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncAlbotAPISDK) -> None:
         response = await async_client.shards.with_raw_response.list()
@@ -237,7 +237,7 @@ class TestAsyncShards:
         shard = await response.parse()
         assert_matches_type(ShardListResponse, shard, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncAlbotAPISDK) -> None:
         async with async_client.shards.with_streaming_response.list() as response:
@@ -249,13 +249,13 @@ class TestAsyncShards:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_assign(self, async_client: AsyncAlbotAPISDK) -> None:
         shard = await async_client.shards.assign()
         assert_matches_type(ShardAssignResponse, shard, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_assign(self, async_client: AsyncAlbotAPISDK) -> None:
         response = await async_client.shards.with_raw_response.assign()
@@ -265,7 +265,7 @@ class TestAsyncShards:
         shard = await response.parse()
         assert_matches_type(ShardAssignResponse, shard, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_assign(self, async_client: AsyncAlbotAPISDK) -> None:
         async with async_client.shards.with_streaming_response.assign() as response:
@@ -277,7 +277,7 @@ class TestAsyncShards:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_get_connection_commands(self, async_client: AsyncAlbotAPISDK) -> None:
         shard = await async_client.shards.get_connection_commands(
@@ -285,7 +285,7 @@ class TestAsyncShards:
         )
         assert_matches_type(ShardGetConnectionCommandsResponse, shard, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_get_connection_commands_with_all_params(self, async_client: AsyncAlbotAPISDK) -> None:
         shard = await async_client.shards.get_connection_commands(
@@ -294,7 +294,7 @@ class TestAsyncShards:
         )
         assert_matches_type(ShardGetConnectionCommandsResponse, shard, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_get_connection_commands(self, async_client: AsyncAlbotAPISDK) -> None:
         response = await async_client.shards.with_raw_response.get_connection_commands(
@@ -306,7 +306,7 @@ class TestAsyncShards:
         shard = await response.parse()
         assert_matches_type(ShardGetConnectionCommandsResponse, shard, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_get_connection_commands(self, async_client: AsyncAlbotAPISDK) -> None:
         async with async_client.shards.with_streaming_response.get_connection_commands(
@@ -320,7 +320,7 @@ class TestAsyncShards:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_post_metrics(self, async_client: AsyncAlbotAPISDK) -> None:
         shard = await async_client.shards.post_metrics(
@@ -328,7 +328,7 @@ class TestAsyncShards:
         )
         assert_matches_type(PlainAPIResponse, shard, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_post_metrics_with_all_params(self, async_client: AsyncAlbotAPISDK) -> None:
         shard = await async_client.shards.post_metrics(
@@ -338,7 +338,7 @@ class TestAsyncShards:
         )
         assert_matches_type(PlainAPIResponse, shard, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_post_metrics(self, async_client: AsyncAlbotAPISDK) -> None:
         response = await async_client.shards.with_raw_response.post_metrics(
@@ -350,7 +350,7 @@ class TestAsyncShards:
         shard = await response.parse()
         assert_matches_type(PlainAPIResponse, shard, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_post_metrics(self, async_client: AsyncAlbotAPISDK) -> None:
         async with async_client.shards.with_streaming_response.post_metrics(
@@ -364,7 +364,7 @@ class TestAsyncShards:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_release(self, async_client: AsyncAlbotAPISDK) -> None:
         shard = await async_client.shards.release(
@@ -372,7 +372,7 @@ class TestAsyncShards:
         )
         assert_matches_type(PlainAPIResponse, shard, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_release(self, async_client: AsyncAlbotAPISDK) -> None:
         response = await async_client.shards.with_raw_response.release(
@@ -384,7 +384,7 @@ class TestAsyncShards:
         shard = await response.parse()
         assert_matches_type(PlainAPIResponse, shard, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_release(self, async_client: AsyncAlbotAPISDK) -> None:
         async with async_client.shards.with_streaming_response.release(

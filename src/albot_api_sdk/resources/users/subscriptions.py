@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Query, Headers, NotGiven, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -29,7 +29,7 @@ class SubscriptionsResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/stainless-sdks/albot-api-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/ALbot-developers/api-sdk-py#accessing-raw-response-data-eg-headers
         """
         return SubscriptionsResourceWithRawResponse(self)
 
@@ -38,7 +38,7 @@ class SubscriptionsResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/stainless-sdks/albot-api-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/ALbot-developers/api-sdk-py#with_streaming_response
         """
         return SubscriptionsResourceWithStreamingResponse(self)
 
@@ -51,7 +51,7 @@ class SubscriptionsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ListSubscriptions:
         """
         List Subscriptions Api
@@ -84,7 +84,7 @@ class SubscriptionsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlainAPIResponse:
         """
         Activate Subscriptions Api
@@ -119,7 +119,7 @@ class SubscriptionsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlainAPIResponse:
         """
         Cancel Subscriptions Api
@@ -154,7 +154,7 @@ class SubscriptionsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlainAPIResponse:
         """
         Renew Subscriptions Api
@@ -187,7 +187,7 @@ class AsyncSubscriptionsResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/stainless-sdks/albot-api-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/ALbot-developers/api-sdk-py#accessing-raw-response-data-eg-headers
         """
         return AsyncSubscriptionsResourceWithRawResponse(self)
 
@@ -196,7 +196,7 @@ class AsyncSubscriptionsResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/stainless-sdks/albot-api-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/ALbot-developers/api-sdk-py#with_streaming_response
         """
         return AsyncSubscriptionsResourceWithStreamingResponse(self)
 
@@ -209,7 +209,7 @@ class AsyncSubscriptionsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ListSubscriptions:
         """
         List Subscriptions Api
@@ -242,7 +242,7 @@ class AsyncSubscriptionsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlainAPIResponse:
         """
         Activate Subscriptions Api
@@ -279,7 +279,7 @@ class AsyncSubscriptionsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlainAPIResponse:
         """
         Cancel Subscriptions Api
@@ -314,7 +314,7 @@ class AsyncSubscriptionsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlainAPIResponse:
         """
         Renew Subscriptions Api

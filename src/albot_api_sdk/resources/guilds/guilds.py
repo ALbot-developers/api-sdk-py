@@ -15,7 +15,7 @@ from .dict import (
     AsyncDictResourceWithStreamingResponse,
 )
 from ...types import guild_create_quick_report_params, guild_create_connection_states_params
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from .settings import (
     SettingsResource,
@@ -104,7 +104,7 @@ class GuildsResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/stainless-sdks/albot-api-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/ALbot-developers/api-sdk-py#accessing-raw-response-data-eg-headers
         """
         return GuildsResourceWithRawResponse(self)
 
@@ -113,7 +113,7 @@ class GuildsResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/stainless-sdks/albot-api-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/ALbot-developers/api-sdk-py#with_streaming_response
         """
         return GuildsResourceWithStreamingResponse(self)
 
@@ -126,7 +126,7 @@ class GuildsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlainAPIResponse:
         """
         Create Guild Resources
@@ -157,7 +157,7 @@ class GuildsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlainAPIResponse:
         """
         Delete Guild Resources
@@ -185,18 +185,19 @@ class GuildsResource(SyncAPIResource):
         *,
         tc_id: int,
         vc_id: int,
-        character_limit: Optional[int] | NotGiven = NOT_GIVEN,
-        lang: Optional[str] | NotGiven = NOT_GIVEN,
-        read_guild: Optional[bool] | NotGiven = NOT_GIVEN,
-        read_name: Optional[bool] | NotGiven = NOT_GIVEN,
-        speech_speed: Optional[float] | NotGiven = NOT_GIVEN,
-        translate: Optional[bool] | NotGiven = NOT_GIVEN,
+        character_limit: Optional[int] | Omit = omit,
+        custom_voice: Optional[str] | Omit = omit,
+        lang: Optional[str] | Omit = omit,
+        read_guild: Optional[bool] | Omit = omit,
+        read_name: Optional[bool] | Omit = omit,
+        speech_speed: Optional[float] | Omit = omit,
+        translate: Optional[bool] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> GuildCreateConnectionStatesResponse:
         """
         Create Connection States Api
@@ -217,6 +218,7 @@ class GuildsResource(SyncAPIResource):
                     "tc_id": tc_id,
                     "vc_id": vc_id,
                     "character_limit": character_limit,
+                    "custom_voice": custom_voice,
                     "lang": lang,
                     "read_guild": read_guild,
                     "read_name": read_name,
@@ -243,7 +245,7 @@ class GuildsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlainAPIResponse:
         """
         Post Quick Report
@@ -284,7 +286,7 @@ class GuildsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ListSubscriptions:
         """
         List Guild Subscriptions Api
@@ -338,7 +340,7 @@ class AsyncGuildsResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/stainless-sdks/albot-api-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/ALbot-developers/api-sdk-py#accessing-raw-response-data-eg-headers
         """
         return AsyncGuildsResourceWithRawResponse(self)
 
@@ -347,7 +349,7 @@ class AsyncGuildsResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/stainless-sdks/albot-api-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/ALbot-developers/api-sdk-py#with_streaming_response
         """
         return AsyncGuildsResourceWithStreamingResponse(self)
 
@@ -360,7 +362,7 @@ class AsyncGuildsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlainAPIResponse:
         """
         Create Guild Resources
@@ -391,7 +393,7 @@ class AsyncGuildsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlainAPIResponse:
         """
         Delete Guild Resources
@@ -419,18 +421,19 @@ class AsyncGuildsResource(AsyncAPIResource):
         *,
         tc_id: int,
         vc_id: int,
-        character_limit: Optional[int] | NotGiven = NOT_GIVEN,
-        lang: Optional[str] | NotGiven = NOT_GIVEN,
-        read_guild: Optional[bool] | NotGiven = NOT_GIVEN,
-        read_name: Optional[bool] | NotGiven = NOT_GIVEN,
-        speech_speed: Optional[float] | NotGiven = NOT_GIVEN,
-        translate: Optional[bool] | NotGiven = NOT_GIVEN,
+        character_limit: Optional[int] | Omit = omit,
+        custom_voice: Optional[str] | Omit = omit,
+        lang: Optional[str] | Omit = omit,
+        read_guild: Optional[bool] | Omit = omit,
+        read_name: Optional[bool] | Omit = omit,
+        speech_speed: Optional[float] | Omit = omit,
+        translate: Optional[bool] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> GuildCreateConnectionStatesResponse:
         """
         Create Connection States Api
@@ -451,6 +454,7 @@ class AsyncGuildsResource(AsyncAPIResource):
                     "tc_id": tc_id,
                     "vc_id": vc_id,
                     "character_limit": character_limit,
+                    "custom_voice": custom_voice,
                     "lang": lang,
                     "read_guild": read_guild,
                     "read_name": read_name,
@@ -477,7 +481,7 @@ class AsyncGuildsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlainAPIResponse:
         """
         Post Quick Report
@@ -518,7 +522,7 @@ class AsyncGuildsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ListSubscriptions:
         """
         List Guild Subscriptions Api

@@ -15,6 +15,8 @@ class GuildCreateConnectionStatesParams(TypedDict, total=False):
 
     character_limit: Optional[int]
 
+    custom_voice: Optional[str]
+
     lang: Optional[str]
 
     read_guild: Optional[bool]

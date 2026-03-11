@@ -12,6 +12,7 @@ class SettingUpdateParams(TypedDict, total=False):
     audio_api: Optional[Literal["gtts", "openai"]]
 
     character_limit: Optional[int]
+    """Maximum character limit for messages"""
 
     custom_voice: Optional[str]
 
@@ -28,5 +29,6 @@ class SettingUpdateParams(TypedDict, total=False):
     read_not_joined_users: Optional[bool]
 
     speech_speed: Optional[float]
+    """Speech speed multiplier"""
 
     translate: Optional[bool]

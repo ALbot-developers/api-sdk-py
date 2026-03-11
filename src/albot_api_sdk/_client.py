@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import os
-from typing import Any, Union, Mapping
+from typing import TYPE_CHECKING, Any, Mapping
 from typing_extensions import Self, override
 
 import httpx
@@ -11,7 +11,6 @@ import httpx
 from . import _exceptions
 from ._qs import Querystring
 from ._types import (
-    NOT_GIVEN,
     Body,
     Omit,
     Query,
@@ -21,8 +20,10 @@ from ._types import (
     Transport,
     ProxiesTypes,
     RequestOptions,
+    not_given,
 )
 from ._utils import is_given, get_async_library
+from ._compat import cached_property
 from ._version import __version__
 from ._response import (
     to_raw_response_wrapper,
@@ -30,7 +31,6 @@ from ._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .resources import oauth2, shards, metrics, webhooks
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import APIStatusError, AlbotApisdkError
 from ._base_client import (
@@ -39,8 +39,15 @@ from ._base_client import (
     AsyncAPIClient,
     make_request_options,
 )
-from .resources.users import users
-from .resources.guilds import guilds
+
+if TYPE_CHECKING:
+    from .resources import users, guilds, oauth2, shards, metrics, webhooks
+    from .resources.oauth2 import Oauth2Resource, AsyncOauth2Resource
+    from .resources.shards import ShardsResource, AsyncShardsResource
+    from .resources.metrics import MetricsResource, AsyncMetricsResource
+    from .resources.webhooks import WebhooksResource, AsyncWebhooksResource
+    from .resources.users.users import UsersResource, AsyncUsersResource
+    from .resources.guilds.guilds import GuildsResource, AsyncGuildsResource
 
 __all__ = [
     "Timeout",
@@ -55,15 +62,6 @@ __all__ = [
 
 
 class AlbotAPISDK(SyncAPIClient):
-    oauth2: oauth2.Oauth2Resource
-    shards: shards.ShardsResource
-    guilds: guilds.GuildsResource
-    users: users.UsersResource
-    metrics: metrics.MetricsResource
-    webhooks: webhooks.WebhooksResource
-    with_raw_response: AlbotAPISDKWithRawResponse
-    with_streaming_response: AlbotAPISDKWithStreamedResponse
-
     # client options
     api_key: str
 
@@ -72,7 +70,7 @@ class AlbotAPISDK(SyncAPIClient):
         *,
         api_key: str | None = None,
         base_url: str | httpx.URL | None = None,
-        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        timeout: float | Timeout | None | NotGiven = not_given,
         max_retries: int = DEFAULT_MAX_RETRIES,
         default_headers: Mapping[str, str] | None = None,
         default_query: Mapping[str, object] | None = None,
@@ -105,7 +103,7 @@ class AlbotAPISDK(SyncAPIClient):
         if base_url is None:
             base_url = os.environ.get("ALBOT_API_SDK_BASE_URL")
         if base_url is None:
-            base_url = f"/v2"
+            base_url = f"https://api.albot.info/v2"
 
         super().__init__(
             version=__version__,
@@ -118,14 +116,49 @@ class AlbotAPISDK(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.oauth2 = oauth2.Oauth2Resource(self)
-        self.shards = shards.ShardsResource(self)
-        self.guilds = guilds.GuildsResource(self)
-        self.users = users.UsersResource(self)
-        self.metrics = metrics.MetricsResource(self)
-        self.webhooks = webhooks.WebhooksResource(self)
-        self.with_raw_response = AlbotAPISDKWithRawResponse(self)
-        self.with_streaming_response = AlbotAPISDKWithStreamedResponse(self)
+    @cached_property
+    def oauth2(self) -> Oauth2Resource:
+        from .resources.oauth2 import Oauth2Resource
+
+        return Oauth2Resource(self)
+
+    @cached_property
+    def shards(self) -> ShardsResource:
+        from .resources.shards import ShardsResource
+
+        return ShardsResource(self)
+
+    @cached_property
+    def guilds(self) -> GuildsResource:
+        from .resources.guilds import GuildsResource
+
+        return GuildsResource(self)
+
+    @cached_property
+    def users(self) -> UsersResource:
+        from .resources.users import UsersResource
+
+        return UsersResource(self)
+
+    @cached_property
+    def metrics(self) -> MetricsResource:
+        from .resources.metrics import MetricsResource
+
+        return MetricsResource(self)
+
+    @cached_property
+    def webhooks(self) -> WebhooksResource:
+        from .resources.webhooks import WebhooksResource
+
+        return WebhooksResource(self)
+
+    @cached_property
+    def with_raw_response(self) -> AlbotAPISDKWithRawResponse:
+        return AlbotAPISDKWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> AlbotAPISDKWithStreamedResponse:
+        return AlbotAPISDKWithStreamedResponse(self)
 
     @property
     @override
@@ -152,9 +185,9 @@ class AlbotAPISDK(SyncAPIClient):
         *,
         api_key: str | None = None,
         base_url: str | httpx.URL | None = None,
-        timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | Timeout | None | NotGiven = not_given,
         http_client: httpx.Client | None = None,
-        max_retries: int | NotGiven = NOT_GIVEN,
+        max_retries: int | NotGiven = not_given,
         default_headers: Mapping[str, str] | None = None,
         set_default_headers: Mapping[str, str] | None = None,
         default_query: Mapping[str, object] | None = None,
@@ -206,7 +239,7 @@ class AlbotAPISDK(SyncAPIClient):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> object:
         """Root"""
         return self.get(
@@ -252,15 +285,6 @@ class AlbotAPISDK(SyncAPIClient):
 
 
 class AsyncAlbotAPISDK(AsyncAPIClient):
-    oauth2: oauth2.AsyncOauth2Resource
-    shards: shards.AsyncShardsResource
-    guilds: guilds.AsyncGuildsResource
-    users: users.AsyncUsersResource
-    metrics: metrics.AsyncMetricsResource
-    webhooks: webhooks.AsyncWebhooksResource
-    with_raw_response: AsyncAlbotAPISDKWithRawResponse
-    with_streaming_response: AsyncAlbotAPISDKWithStreamedResponse
-
     # client options
     api_key: str
 
@@ -269,7 +293,7 @@ class AsyncAlbotAPISDK(AsyncAPIClient):
         *,
         api_key: str | None = None,
         base_url: str | httpx.URL | None = None,
-        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        timeout: float | Timeout | None | NotGiven = not_given,
         max_retries: int = DEFAULT_MAX_RETRIES,
         default_headers: Mapping[str, str] | None = None,
         default_query: Mapping[str, object] | None = None,
@@ -302,7 +326,7 @@ class AsyncAlbotAPISDK(AsyncAPIClient):
         if base_url is None:
             base_url = os.environ.get("ALBOT_API_SDK_BASE_URL")
         if base_url is None:
-            base_url = f"/v2"
+            base_url = f"https://api.albot.info/v2"
 
         super().__init__(
             version=__version__,
@@ -315,14 +339,49 @@ class AsyncAlbotAPISDK(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.oauth2 = oauth2.AsyncOauth2Resource(self)
-        self.shards = shards.AsyncShardsResource(self)
-        self.guilds = guilds.AsyncGuildsResource(self)
-        self.users = users.AsyncUsersResource(self)
-        self.metrics = metrics.AsyncMetricsResource(self)
-        self.webhooks = webhooks.AsyncWebhooksResource(self)
-        self.with_raw_response = AsyncAlbotAPISDKWithRawResponse(self)
-        self.with_streaming_response = AsyncAlbotAPISDKWithStreamedResponse(self)
+    @cached_property
+    def oauth2(self) -> AsyncOauth2Resource:
+        from .resources.oauth2 import AsyncOauth2Resource
+
+        return AsyncOauth2Resource(self)
+
+    @cached_property
+    def shards(self) -> AsyncShardsResource:
+        from .resources.shards import AsyncShardsResource
+
+        return AsyncShardsResource(self)
+
+    @cached_property
+    def guilds(self) -> AsyncGuildsResource:
+        from .resources.guilds import AsyncGuildsResource
+
+        return AsyncGuildsResource(self)
+
+    @cached_property
+    def users(self) -> AsyncUsersResource:
+        from .resources.users import AsyncUsersResource
+
+        return AsyncUsersResource(self)
+
+    @cached_property
+    def metrics(self) -> AsyncMetricsResource:
+        from .resources.metrics import AsyncMetricsResource
+
+        return AsyncMetricsResource(self)
+
+    @cached_property
+    def webhooks(self) -> AsyncWebhooksResource:
+        from .resources.webhooks import AsyncWebhooksResource
+
+        return AsyncWebhooksResource(self)
+
+    @cached_property
+    def with_raw_response(self) -> AsyncAlbotAPISDKWithRawResponse:
+        return AsyncAlbotAPISDKWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> AsyncAlbotAPISDKWithStreamedResponse:
+        return AsyncAlbotAPISDKWithStreamedResponse(self)
 
     @property
     @override
@@ -349,9 +408,9 @@ class AsyncAlbotAPISDK(AsyncAPIClient):
         *,
         api_key: str | None = None,
         base_url: str | httpx.URL | None = None,
-        timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | Timeout | None | NotGiven = not_given,
         http_client: httpx.AsyncClient | None = None,
-        max_retries: int | NotGiven = NOT_GIVEN,
+        max_retries: int | NotGiven = not_given,
         default_headers: Mapping[str, str] | None = None,
         set_default_headers: Mapping[str, str] | None = None,
         default_query: Mapping[str, object] | None = None,
@@ -403,7 +462,7 @@ class AsyncAlbotAPISDK(AsyncAPIClient):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> object:
         """Root"""
         return await self.get(
@@ -449,59 +508,191 @@ class AsyncAlbotAPISDK(AsyncAPIClient):
 
 
 class AlbotAPISDKWithRawResponse:
+    _client: AlbotAPISDK
+
     def __init__(self, client: AlbotAPISDK) -> None:
-        self.oauth2 = oauth2.Oauth2ResourceWithRawResponse(client.oauth2)
-        self.shards = shards.ShardsResourceWithRawResponse(client.shards)
-        self.guilds = guilds.GuildsResourceWithRawResponse(client.guilds)
-        self.users = users.UsersResourceWithRawResponse(client.users)
-        self.metrics = metrics.MetricsResourceWithRawResponse(client.metrics)
-        self.webhooks = webhooks.WebhooksResourceWithRawResponse(client.webhooks)
+        self._client = client
 
         self.get_root = to_raw_response_wrapper(
             client.get_root,
         )
 
+    @cached_property
+    def oauth2(self) -> oauth2.Oauth2ResourceWithRawResponse:
+        from .resources.oauth2 import Oauth2ResourceWithRawResponse
+
+        return Oauth2ResourceWithRawResponse(self._client.oauth2)
+
+    @cached_property
+    def shards(self) -> shards.ShardsResourceWithRawResponse:
+        from .resources.shards import ShardsResourceWithRawResponse
+
+        return ShardsResourceWithRawResponse(self._client.shards)
+
+    @cached_property
+    def guilds(self) -> guilds.GuildsResourceWithRawResponse:
+        from .resources.guilds import GuildsResourceWithRawResponse
+
+        return GuildsResourceWithRawResponse(self._client.guilds)
+
+    @cached_property
+    def users(self) -> users.UsersResourceWithRawResponse:
+        from .resources.users import UsersResourceWithRawResponse
+
+        return UsersResourceWithRawResponse(self._client.users)
+
+    @cached_property
+    def metrics(self) -> metrics.MetricsResourceWithRawResponse:
+        from .resources.metrics import MetricsResourceWithRawResponse
+
+        return MetricsResourceWithRawResponse(self._client.metrics)
+
+    @cached_property
+    def webhooks(self) -> webhooks.WebhooksResourceWithRawResponse:
+        from .resources.webhooks import WebhooksResourceWithRawResponse
+
+        return WebhooksResourceWithRawResponse(self._client.webhooks)
+
 
 class AsyncAlbotAPISDKWithRawResponse:
+    _client: AsyncAlbotAPISDK
+
     def __init__(self, client: AsyncAlbotAPISDK) -> None:
-        self.oauth2 = oauth2.AsyncOauth2ResourceWithRawResponse(client.oauth2)
-        self.shards = shards.AsyncShardsResourceWithRawResponse(client.shards)
-        self.guilds = guilds.AsyncGuildsResourceWithRawResponse(client.guilds)
-        self.users = users.AsyncUsersResourceWithRawResponse(client.users)
-        self.metrics = metrics.AsyncMetricsResourceWithRawResponse(client.metrics)
-        self.webhooks = webhooks.AsyncWebhooksResourceWithRawResponse(client.webhooks)
+        self._client = client
 
         self.get_root = async_to_raw_response_wrapper(
             client.get_root,
         )
 
+    @cached_property
+    def oauth2(self) -> oauth2.AsyncOauth2ResourceWithRawResponse:
+        from .resources.oauth2 import AsyncOauth2ResourceWithRawResponse
+
+        return AsyncOauth2ResourceWithRawResponse(self._client.oauth2)
+
+    @cached_property
+    def shards(self) -> shards.AsyncShardsResourceWithRawResponse:
+        from .resources.shards import AsyncShardsResourceWithRawResponse
+
+        return AsyncShardsResourceWithRawResponse(self._client.shards)
+
+    @cached_property
+    def guilds(self) -> guilds.AsyncGuildsResourceWithRawResponse:
+        from .resources.guilds import AsyncGuildsResourceWithRawResponse
+
+        return AsyncGuildsResourceWithRawResponse(self._client.guilds)
+
+    @cached_property
+    def users(self) -> users.AsyncUsersResourceWithRawResponse:
+        from .resources.users import AsyncUsersResourceWithRawResponse
+
+        return AsyncUsersResourceWithRawResponse(self._client.users)
+
+    @cached_property
+    def metrics(self) -> metrics.AsyncMetricsResourceWithRawResponse:
+        from .resources.metrics import AsyncMetricsResourceWithRawResponse
+
+        return AsyncMetricsResourceWithRawResponse(self._client.metrics)
+
+    @cached_property
+    def webhooks(self) -> webhooks.AsyncWebhooksResourceWithRawResponse:
+        from .resources.webhooks import AsyncWebhooksResourceWithRawResponse
+
+        return AsyncWebhooksResourceWithRawResponse(self._client.webhooks)
+
 
 class AlbotAPISDKWithStreamedResponse:
+    _client: AlbotAPISDK
+
     def __init__(self, client: AlbotAPISDK) -> None:
-        self.oauth2 = oauth2.Oauth2ResourceWithStreamingResponse(client.oauth2)
-        self.shards = shards.ShardsResourceWithStreamingResponse(client.shards)
-        self.guilds = guilds.GuildsResourceWithStreamingResponse(client.guilds)
-        self.users = users.UsersResourceWithStreamingResponse(client.users)
-        self.metrics = metrics.MetricsResourceWithStreamingResponse(client.metrics)
-        self.webhooks = webhooks.WebhooksResourceWithStreamingResponse(client.webhooks)
+        self._client = client
 
         self.get_root = to_streamed_response_wrapper(
             client.get_root,
         )
 
+    @cached_property
+    def oauth2(self) -> oauth2.Oauth2ResourceWithStreamingResponse:
+        from .resources.oauth2 import Oauth2ResourceWithStreamingResponse
+
+        return Oauth2ResourceWithStreamingResponse(self._client.oauth2)
+
+    @cached_property
+    def shards(self) -> shards.ShardsResourceWithStreamingResponse:
+        from .resources.shards import ShardsResourceWithStreamingResponse
+
+        return ShardsResourceWithStreamingResponse(self._client.shards)
+
+    @cached_property
+    def guilds(self) -> guilds.GuildsResourceWithStreamingResponse:
+        from .resources.guilds import GuildsResourceWithStreamingResponse
+
+        return GuildsResourceWithStreamingResponse(self._client.guilds)
+
+    @cached_property
+    def users(self) -> users.UsersResourceWithStreamingResponse:
+        from .resources.users import UsersResourceWithStreamingResponse
+
+        return UsersResourceWithStreamingResponse(self._client.users)
+
+    @cached_property
+    def metrics(self) -> metrics.MetricsResourceWithStreamingResponse:
+        from .resources.metrics import MetricsResourceWithStreamingResponse
+
+        return MetricsResourceWithStreamingResponse(self._client.metrics)
+
+    @cached_property
+    def webhooks(self) -> webhooks.WebhooksResourceWithStreamingResponse:
+        from .resources.webhooks import WebhooksResourceWithStreamingResponse
+
+        return WebhooksResourceWithStreamingResponse(self._client.webhooks)
+
 
 class AsyncAlbotAPISDKWithStreamedResponse:
+    _client: AsyncAlbotAPISDK
+
     def __init__(self, client: AsyncAlbotAPISDK) -> None:
-        self.oauth2 = oauth2.AsyncOauth2ResourceWithStreamingResponse(client.oauth2)
-        self.shards = shards.AsyncShardsResourceWithStreamingResponse(client.shards)
-        self.guilds = guilds.AsyncGuildsResourceWithStreamingResponse(client.guilds)
-        self.users = users.AsyncUsersResourceWithStreamingResponse(client.users)
-        self.metrics = metrics.AsyncMetricsResourceWithStreamingResponse(client.metrics)
-        self.webhooks = webhooks.AsyncWebhooksResourceWithStreamingResponse(client.webhooks)
+        self._client = client
 
         self.get_root = async_to_streamed_response_wrapper(
             client.get_root,
         )
+
+    @cached_property
+    def oauth2(self) -> oauth2.AsyncOauth2ResourceWithStreamingResponse:
+        from .resources.oauth2 import AsyncOauth2ResourceWithStreamingResponse
+
+        return AsyncOauth2ResourceWithStreamingResponse(self._client.oauth2)
+
+    @cached_property
+    def shards(self) -> shards.AsyncShardsResourceWithStreamingResponse:
+        from .resources.shards import AsyncShardsResourceWithStreamingResponse
+
+        return AsyncShardsResourceWithStreamingResponse(self._client.shards)
+
+    @cached_property
+    def guilds(self) -> guilds.AsyncGuildsResourceWithStreamingResponse:
+        from .resources.guilds import AsyncGuildsResourceWithStreamingResponse
+
+        return AsyncGuildsResourceWithStreamingResponse(self._client.guilds)
+
+    @cached_property
+    def users(self) -> users.AsyncUsersResourceWithStreamingResponse:
+        from .resources.users import AsyncUsersResourceWithStreamingResponse
+
+        return AsyncUsersResourceWithStreamingResponse(self._client.users)
+
+    @cached_property
+    def metrics(self) -> metrics.AsyncMetricsResourceWithStreamingResponse:
+        from .resources.metrics import AsyncMetricsResourceWithStreamingResponse
+
+        return AsyncMetricsResourceWithStreamingResponse(self._client.metrics)
+
+    @cached_property
+    def webhooks(self) -> webhooks.AsyncWebhooksResourceWithStreamingResponse:
+        from .resources.webhooks import AsyncWebhooksResourceWithStreamingResponse
+
+        return AsyncWebhooksResourceWithStreamingResponse(self._client.webhooks)
 
 
 Client = AlbotAPISDK

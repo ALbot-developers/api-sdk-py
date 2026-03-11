@@ -21,7 +21,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestGuilds:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create(self, client: AlbotAPISDK) -> None:
         guild = client.guilds.create(
@@ -29,7 +29,7 @@ class TestGuilds:
         )
         assert_matches_type(PlainAPIResponse, guild, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: AlbotAPISDK) -> None:
         response = client.guilds.with_raw_response.create(
@@ -41,7 +41,7 @@ class TestGuilds:
         guild = response.parse()
         assert_matches_type(PlainAPIResponse, guild, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_create(self, client: AlbotAPISDK) -> None:
         with client.guilds.with_streaming_response.create(
@@ -55,7 +55,7 @@ class TestGuilds:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_delete(self, client: AlbotAPISDK) -> None:
         guild = client.guilds.delete(
@@ -63,7 +63,7 @@ class TestGuilds:
         )
         assert_matches_type(PlainAPIResponse, guild, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_delete(self, client: AlbotAPISDK) -> None:
         response = client.guilds.with_raw_response.delete(
@@ -75,7 +75,7 @@ class TestGuilds:
         guild = response.parse()
         assert_matches_type(PlainAPIResponse, guild, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_delete(self, client: AlbotAPISDK) -> None:
         with client.guilds.with_streaming_response.delete(
@@ -89,7 +89,7 @@ class TestGuilds:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create_connection_states(self, client: AlbotAPISDK) -> None:
         guild = client.guilds.create_connection_states(
@@ -99,7 +99,7 @@ class TestGuilds:
         )
         assert_matches_type(GuildCreateConnectionStatesResponse, guild, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create_connection_states_with_all_params(self, client: AlbotAPISDK) -> None:
         guild = client.guilds.create_connection_states(
@@ -107,6 +107,7 @@ class TestGuilds:
             tc_id=0,
             vc_id=0,
             character_limit=0,
+            custom_voice="custom_voice",
             lang="lang",
             read_guild=True,
             read_name=True,
@@ -115,7 +116,7 @@ class TestGuilds:
         )
         assert_matches_type(GuildCreateConnectionStatesResponse, guild, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_create_connection_states(self, client: AlbotAPISDK) -> None:
         response = client.guilds.with_raw_response.create_connection_states(
@@ -129,7 +130,7 @@ class TestGuilds:
         guild = response.parse()
         assert_matches_type(GuildCreateConnectionStatesResponse, guild, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_create_connection_states(self, client: AlbotAPISDK) -> None:
         with client.guilds.with_streaming_response.create_connection_states(
@@ -145,7 +146,7 @@ class TestGuilds:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create_quick_report(self, client: AlbotAPISDK) -> None:
         guild = client.guilds.create_quick_report(
@@ -156,7 +157,7 @@ class TestGuilds:
         )
         assert_matches_type(PlainAPIResponse, guild, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_create_quick_report(self, client: AlbotAPISDK) -> None:
         response = client.guilds.with_raw_response.create_quick_report(
@@ -171,7 +172,7 @@ class TestGuilds:
         guild = response.parse()
         assert_matches_type(PlainAPIResponse, guild, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_create_quick_report(self, client: AlbotAPISDK) -> None:
         with client.guilds.with_streaming_response.create_quick_report(
@@ -188,7 +189,7 @@ class TestGuilds:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list_subscriptions(self, client: AlbotAPISDK) -> None:
         guild = client.guilds.list_subscriptions(
@@ -196,7 +197,7 @@ class TestGuilds:
         )
         assert_matches_type(ListSubscriptions, guild, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_list_subscriptions(self, client: AlbotAPISDK) -> None:
         response = client.guilds.with_raw_response.list_subscriptions(
@@ -208,7 +209,7 @@ class TestGuilds:
         guild = response.parse()
         assert_matches_type(ListSubscriptions, guild, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_list_subscriptions(self, client: AlbotAPISDK) -> None:
         with client.guilds.with_streaming_response.list_subscriptions(
@@ -228,7 +229,7 @@ class TestAsyncGuilds:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create(self, async_client: AsyncAlbotAPISDK) -> None:
         guild = await async_client.guilds.create(
@@ -236,7 +237,7 @@ class TestAsyncGuilds:
         )
         assert_matches_type(PlainAPIResponse, guild, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncAlbotAPISDK) -> None:
         response = await async_client.guilds.with_raw_response.create(
@@ -248,7 +249,7 @@ class TestAsyncGuilds:
         guild = await response.parse()
         assert_matches_type(PlainAPIResponse, guild, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncAlbotAPISDK) -> None:
         async with async_client.guilds.with_streaming_response.create(
@@ -262,7 +263,7 @@ class TestAsyncGuilds:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_delete(self, async_client: AsyncAlbotAPISDK) -> None:
         guild = await async_client.guilds.delete(
@@ -270,7 +271,7 @@ class TestAsyncGuilds:
         )
         assert_matches_type(PlainAPIResponse, guild, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncAlbotAPISDK) -> None:
         response = await async_client.guilds.with_raw_response.delete(
@@ -282,7 +283,7 @@ class TestAsyncGuilds:
         guild = await response.parse()
         assert_matches_type(PlainAPIResponse, guild, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncAlbotAPISDK) -> None:
         async with async_client.guilds.with_streaming_response.delete(
@@ -296,7 +297,7 @@ class TestAsyncGuilds:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create_connection_states(self, async_client: AsyncAlbotAPISDK) -> None:
         guild = await async_client.guilds.create_connection_states(
@@ -306,7 +307,7 @@ class TestAsyncGuilds:
         )
         assert_matches_type(GuildCreateConnectionStatesResponse, guild, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create_connection_states_with_all_params(self, async_client: AsyncAlbotAPISDK) -> None:
         guild = await async_client.guilds.create_connection_states(
@@ -314,6 +315,7 @@ class TestAsyncGuilds:
             tc_id=0,
             vc_id=0,
             character_limit=0,
+            custom_voice="custom_voice",
             lang="lang",
             read_guild=True,
             read_name=True,
@@ -322,7 +324,7 @@ class TestAsyncGuilds:
         )
         assert_matches_type(GuildCreateConnectionStatesResponse, guild, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_create_connection_states(self, async_client: AsyncAlbotAPISDK) -> None:
         response = await async_client.guilds.with_raw_response.create_connection_states(
@@ -336,7 +338,7 @@ class TestAsyncGuilds:
         guild = await response.parse()
         assert_matches_type(GuildCreateConnectionStatesResponse, guild, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_create_connection_states(self, async_client: AsyncAlbotAPISDK) -> None:
         async with async_client.guilds.with_streaming_response.create_connection_states(
@@ -352,7 +354,7 @@ class TestAsyncGuilds:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create_quick_report(self, async_client: AsyncAlbotAPISDK) -> None:
         guild = await async_client.guilds.create_quick_report(
@@ -363,7 +365,7 @@ class TestAsyncGuilds:
         )
         assert_matches_type(PlainAPIResponse, guild, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_create_quick_report(self, async_client: AsyncAlbotAPISDK) -> None:
         response = await async_client.guilds.with_raw_response.create_quick_report(
@@ -378,7 +380,7 @@ class TestAsyncGuilds:
         guild = await response.parse()
         assert_matches_type(PlainAPIResponse, guild, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_create_quick_report(self, async_client: AsyncAlbotAPISDK) -> None:
         async with async_client.guilds.with_streaming_response.create_quick_report(
@@ -395,7 +397,7 @@ class TestAsyncGuilds:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list_subscriptions(self, async_client: AsyncAlbotAPISDK) -> None:
         guild = await async_client.guilds.list_subscriptions(
@@ -403,7 +405,7 @@ class TestAsyncGuilds:
         )
         assert_matches_type(ListSubscriptions, guild, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_list_subscriptions(self, async_client: AsyncAlbotAPISDK) -> None:
         response = await async_client.guilds.with_raw_response.list_subscriptions(
@@ -415,7 +417,7 @@ class TestAsyncGuilds:
         guild = await response.parse()
         assert_matches_type(ListSubscriptions, guild, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_list_subscriptions(self, async_client: AsyncAlbotAPISDK) -> None:
         async with async_client.guilds.with_streaming_response.list_subscriptions(

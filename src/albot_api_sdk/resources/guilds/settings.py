@@ -7,7 +7,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -32,7 +32,7 @@ class SettingsResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/stainless-sdks/albot-api-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/ALbot-developers/api-sdk-py#accessing-raw-response-data-eg-headers
         """
         return SettingsResourceWithRawResponse(self)
 
@@ -41,7 +41,7 @@ class SettingsResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/stainless-sdks/albot-api-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/ALbot-developers/api-sdk-py#with_streaming_response
         """
         return SettingsResourceWithStreamingResponse(self)
 
@@ -54,7 +54,7 @@ class SettingsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SettingRetrieveResponse:
         """
         Get Guild Settings Api
@@ -80,28 +80,32 @@ class SettingsResource(SyncAPIResource):
         self,
         guild_id: int,
         *,
-        audio_api: Optional[Literal["gtts", "openai"]] | NotGiven = NOT_GIVEN,
-        character_limit: Optional[int] | NotGiven = NOT_GIVEN,
-        custom_voice: Optional[str] | NotGiven = NOT_GIVEN,
-        lang: Optional[str] | NotGiven = NOT_GIVEN,
-        read_guild: Optional[bool] | NotGiven = NOT_GIVEN,
-        read_name: Optional[bool] | NotGiven = NOT_GIVEN,
-        read_name_on_join: Optional[bool] | NotGiven = NOT_GIVEN,
-        read_name_on_leave: Optional[bool] | NotGiven = NOT_GIVEN,
-        read_not_joined_users: Optional[bool] | NotGiven = NOT_GIVEN,
-        speech_speed: Optional[float] | NotGiven = NOT_GIVEN,
-        translate: Optional[bool] | NotGiven = NOT_GIVEN,
+        audio_api: Optional[Literal["gtts", "openai"]] | Omit = omit,
+        character_limit: Optional[int] | Omit = omit,
+        custom_voice: Optional[str] | Omit = omit,
+        lang: Optional[str] | Omit = omit,
+        read_guild: Optional[bool] | Omit = omit,
+        read_name: Optional[bool] | Omit = omit,
+        read_name_on_join: Optional[bool] | Omit = omit,
+        read_name_on_leave: Optional[bool] | Omit = omit,
+        read_not_joined_users: Optional[bool] | Omit = omit,
+        speech_speed: Optional[float] | Omit = omit,
+        translate: Optional[bool] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlainAPIResponse:
         """
         Update Guild Settings
 
         Args:
+          character_limit: Maximum character limit for messages
+
+          speech_speed: Speech speed multiplier
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -143,7 +147,7 @@ class SettingsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlainAPIResponse:
         """
         Delete Guild Settings
@@ -173,7 +177,7 @@ class AsyncSettingsResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/stainless-sdks/albot-api-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/ALbot-developers/api-sdk-py#accessing-raw-response-data-eg-headers
         """
         return AsyncSettingsResourceWithRawResponse(self)
 
@@ -182,7 +186,7 @@ class AsyncSettingsResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/stainless-sdks/albot-api-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/ALbot-developers/api-sdk-py#with_streaming_response
         """
         return AsyncSettingsResourceWithStreamingResponse(self)
 
@@ -195,7 +199,7 @@ class AsyncSettingsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SettingRetrieveResponse:
         """
         Get Guild Settings Api
@@ -221,28 +225,32 @@ class AsyncSettingsResource(AsyncAPIResource):
         self,
         guild_id: int,
         *,
-        audio_api: Optional[Literal["gtts", "openai"]] | NotGiven = NOT_GIVEN,
-        character_limit: Optional[int] | NotGiven = NOT_GIVEN,
-        custom_voice: Optional[str] | NotGiven = NOT_GIVEN,
-        lang: Optional[str] | NotGiven = NOT_GIVEN,
-        read_guild: Optional[bool] | NotGiven = NOT_GIVEN,
-        read_name: Optional[bool] | NotGiven = NOT_GIVEN,
-        read_name_on_join: Optional[bool] | NotGiven = NOT_GIVEN,
-        read_name_on_leave: Optional[bool] | NotGiven = NOT_GIVEN,
-        read_not_joined_users: Optional[bool] | NotGiven = NOT_GIVEN,
-        speech_speed: Optional[float] | NotGiven = NOT_GIVEN,
-        translate: Optional[bool] | NotGiven = NOT_GIVEN,
+        audio_api: Optional[Literal["gtts", "openai"]] | Omit = omit,
+        character_limit: Optional[int] | Omit = omit,
+        custom_voice: Optional[str] | Omit = omit,
+        lang: Optional[str] | Omit = omit,
+        read_guild: Optional[bool] | Omit = omit,
+        read_name: Optional[bool] | Omit = omit,
+        read_name_on_join: Optional[bool] | Omit = omit,
+        read_name_on_leave: Optional[bool] | Omit = omit,
+        read_not_joined_users: Optional[bool] | Omit = omit,
+        speech_speed: Optional[float] | Omit = omit,
+        translate: Optional[bool] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlainAPIResponse:
         """
         Update Guild Settings
 
         Args:
+          character_limit: Maximum character limit for messages
+
+          speech_speed: Speech speed multiplier
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -284,7 +292,7 @@ class AsyncSettingsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlainAPIResponse:
         """
         Delete Guild Settings

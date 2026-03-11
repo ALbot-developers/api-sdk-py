@@ -17,13 +17,13 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestWebhooks:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create_stripe(self, client: AlbotAPISDK) -> None:
         webhook = client.webhooks.create_stripe()
         assert_matches_type(PlainAPIResponse, webhook, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_create_stripe(self, client: AlbotAPISDK) -> None:
         response = client.webhooks.with_raw_response.create_stripe()
@@ -33,7 +33,7 @@ class TestWebhooks:
         webhook = response.parse()
         assert_matches_type(PlainAPIResponse, webhook, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_create_stripe(self, client: AlbotAPISDK) -> None:
         with client.webhooks.with_streaming_response.create_stripe() as response:
@@ -51,13 +51,13 @@ class TestAsyncWebhooks:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create_stripe(self, async_client: AsyncAlbotAPISDK) -> None:
         webhook = await async_client.webhooks.create_stripe()
         assert_matches_type(PlainAPIResponse, webhook, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_create_stripe(self, async_client: AsyncAlbotAPISDK) -> None:
         response = await async_client.webhooks.with_raw_response.create_stripe()
@@ -67,7 +67,7 @@ class TestAsyncWebhooks:
         webhook = await response.parse()
         assert_matches_type(PlainAPIResponse, webhook, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_create_stripe(self, async_client: AsyncAlbotAPISDK) -> None:
         async with async_client.webhooks.with_streaming_response.create_stripe() as response:

@@ -17,7 +17,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestOauth2:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_callback(self, client: AlbotAPISDK) -> None:
         oauth2 = client.oauth2.callback(
@@ -26,7 +26,7 @@ class TestOauth2:
         )
         assert_matches_type(PlainAPIResponse, oauth2, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_callback(self, client: AlbotAPISDK) -> None:
         response = client.oauth2.with_raw_response.callback(
@@ -39,7 +39,7 @@ class TestOauth2:
         oauth2 = response.parse()
         assert_matches_type(PlainAPIResponse, oauth2, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_callback(self, client: AlbotAPISDK) -> None:
         with client.oauth2.with_streaming_response.callback(
@@ -54,13 +54,13 @@ class TestOauth2:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_logout(self, client: AlbotAPISDK) -> None:
         oauth2 = client.oauth2.logout()
         assert_matches_type(PlainAPIResponse, oauth2, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_logout(self, client: AlbotAPISDK) -> None:
         response = client.oauth2.with_raw_response.logout()
@@ -70,7 +70,7 @@ class TestOauth2:
         oauth2 = response.parse()
         assert_matches_type(PlainAPIResponse, oauth2, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_logout(self, client: AlbotAPISDK) -> None:
         with client.oauth2.with_streaming_response.logout() as response:
@@ -82,7 +82,7 @@ class TestOauth2:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_redirect(self, client: AlbotAPISDK) -> None:
         oauth2 = client.oauth2.redirect(
@@ -90,7 +90,7 @@ class TestOauth2:
         )
         assert_matches_type(URLAPIResponse, oauth2, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_redirect(self, client: AlbotAPISDK) -> None:
         response = client.oauth2.with_raw_response.redirect(
@@ -102,7 +102,7 @@ class TestOauth2:
         oauth2 = response.parse()
         assert_matches_type(URLAPIResponse, oauth2, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_redirect(self, client: AlbotAPISDK) -> None:
         with client.oauth2.with_streaming_response.redirect(
@@ -122,7 +122,7 @@ class TestAsyncOauth2:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_callback(self, async_client: AsyncAlbotAPISDK) -> None:
         oauth2 = await async_client.oauth2.callback(
@@ -131,7 +131,7 @@ class TestAsyncOauth2:
         )
         assert_matches_type(PlainAPIResponse, oauth2, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_callback(self, async_client: AsyncAlbotAPISDK) -> None:
         response = await async_client.oauth2.with_raw_response.callback(
@@ -144,7 +144,7 @@ class TestAsyncOauth2:
         oauth2 = await response.parse()
         assert_matches_type(PlainAPIResponse, oauth2, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_callback(self, async_client: AsyncAlbotAPISDK) -> None:
         async with async_client.oauth2.with_streaming_response.callback(
@@ -159,13 +159,13 @@ class TestAsyncOauth2:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_logout(self, async_client: AsyncAlbotAPISDK) -> None:
         oauth2 = await async_client.oauth2.logout()
         assert_matches_type(PlainAPIResponse, oauth2, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_logout(self, async_client: AsyncAlbotAPISDK) -> None:
         response = await async_client.oauth2.with_raw_response.logout()
@@ -175,7 +175,7 @@ class TestAsyncOauth2:
         oauth2 = await response.parse()
         assert_matches_type(PlainAPIResponse, oauth2, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_logout(self, async_client: AsyncAlbotAPISDK) -> None:
         async with async_client.oauth2.with_streaming_response.logout() as response:
@@ -187,7 +187,7 @@ class TestAsyncOauth2:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_redirect(self, async_client: AsyncAlbotAPISDK) -> None:
         oauth2 = await async_client.oauth2.redirect(
@@ -195,7 +195,7 @@ class TestAsyncOauth2:
         )
         assert_matches_type(URLAPIResponse, oauth2, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_redirect(self, async_client: AsyncAlbotAPISDK) -> None:
         response = await async_client.oauth2.with_raw_response.redirect(
@@ -207,7 +207,7 @@ class TestAsyncOauth2:
         oauth2 = await response.parse()
         assert_matches_type(URLAPIResponse, oauth2, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_redirect(self, async_client: AsyncAlbotAPISDK) -> None:
         async with async_client.oauth2.with_streaming_response.redirect(
