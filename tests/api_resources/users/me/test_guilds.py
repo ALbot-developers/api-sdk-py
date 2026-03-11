@@ -17,13 +17,13 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestGuilds:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list(self, client: AlbotAPISDK) -> None:
         guild = client.users.me.guilds.list()
         assert_matches_type(GuildListResponse, guild, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list_with_all_params(self, client: AlbotAPISDK) -> None:
         guild = client.users.me.guilds.list(
@@ -31,7 +31,7 @@ class TestGuilds:
         )
         assert_matches_type(GuildListResponse, guild, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: AlbotAPISDK) -> None:
         response = client.users.me.guilds.with_raw_response.list()
@@ -41,7 +41,7 @@ class TestGuilds:
         guild = response.parse()
         assert_matches_type(GuildListResponse, guild, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: AlbotAPISDK) -> None:
         with client.users.me.guilds.with_streaming_response.list() as response:
@@ -53,7 +53,7 @@ class TestGuilds:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_retrieve_info(self, client: AlbotAPISDK) -> None:
         guild = client.users.me.guilds.retrieve_info(
@@ -61,7 +61,7 @@ class TestGuilds:
         )
         assert_matches_type(GuildRetrieveInfoResponse, guild, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_retrieve_info(self, client: AlbotAPISDK) -> None:
         response = client.users.me.guilds.with_raw_response.retrieve_info(
@@ -73,7 +73,7 @@ class TestGuilds:
         guild = response.parse()
         assert_matches_type(GuildRetrieveInfoResponse, guild, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_retrieve_info(self, client: AlbotAPISDK) -> None:
         with client.users.me.guilds.with_streaming_response.retrieve_info(
@@ -93,13 +93,13 @@ class TestAsyncGuilds:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list(self, async_client: AsyncAlbotAPISDK) -> None:
         guild = await async_client.users.me.guilds.list()
         assert_matches_type(GuildListResponse, guild, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncAlbotAPISDK) -> None:
         guild = await async_client.users.me.guilds.list(
@@ -107,7 +107,7 @@ class TestAsyncGuilds:
         )
         assert_matches_type(GuildListResponse, guild, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncAlbotAPISDK) -> None:
         response = await async_client.users.me.guilds.with_raw_response.list()
@@ -117,7 +117,7 @@ class TestAsyncGuilds:
         guild = await response.parse()
         assert_matches_type(GuildListResponse, guild, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncAlbotAPISDK) -> None:
         async with async_client.users.me.guilds.with_streaming_response.list() as response:
@@ -129,7 +129,7 @@ class TestAsyncGuilds:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_retrieve_info(self, async_client: AsyncAlbotAPISDK) -> None:
         guild = await async_client.users.me.guilds.retrieve_info(
@@ -137,7 +137,7 @@ class TestAsyncGuilds:
         )
         assert_matches_type(GuildRetrieveInfoResponse, guild, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_retrieve_info(self, async_client: AsyncAlbotAPISDK) -> None:
         response = await async_client.users.me.guilds.with_raw_response.retrieve_info(
@@ -149,7 +149,7 @@ class TestAsyncGuilds:
         guild = await response.parse()
         assert_matches_type(GuildRetrieveInfoResponse, guild, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_retrieve_info(self, async_client: AsyncAlbotAPISDK) -> None:
         async with async_client.users.me.guilds.with_streaming_response.retrieve_info(

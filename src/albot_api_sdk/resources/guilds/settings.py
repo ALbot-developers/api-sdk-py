@@ -102,6 +102,10 @@ class SettingsResource(SyncAPIResource):
         Update Guild Settings
 
         Args:
+          character_limit: Maximum character limit for messages
+
+          speech_speed: Speech speed multiplier
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -243,6 +247,10 @@ class AsyncSettingsResource(AsyncAPIResource):
         Update Guild Settings
 
         Args:
+          character_limit: Maximum character limit for messages
+
+          speech_speed: Speech speed multiplier
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
