@@ -103,7 +103,7 @@ class AlbotAPISDK(SyncAPIClient):
         if base_url is None:
             base_url = os.environ.get("ALBOT_API_SDK_BASE_URL")
         if base_url is None:
-            base_url = f"/v2"
+            base_url = f"https://api.albot.info/v2"
 
         super().__init__(
             version=__version__,
@@ -326,7 +326,7 @@ class AsyncAlbotAPISDK(AsyncAPIClient):
         if base_url is None:
             base_url = os.environ.get("ALBOT_API_SDK_BASE_URL")
         if base_url is None:
-            base_url = f"/v2"
+            base_url = f"https://api.albot.info/v2"
 
         super().__init__(
             version=__version__,
