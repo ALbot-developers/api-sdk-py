@@ -6,9 +6,13 @@ __all__ = ["ShardAssignResponse", "Data"]
 
 
 class Data(BaseModel):
+    dashscope_tts_key: str
+
     discord_token: str
 
     heartbeat_token: str
+
+    sakura_tts_key: str
 
     sentry_dsn: str
 
