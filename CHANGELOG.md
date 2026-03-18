@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.1 (2026-03-18)
+
+Full Changelog: [v0.1.0...v0.1.1](https://github.com/ALbot-developers/api-sdk-py/compare/v0.1.0...v0.1.1)
+
+### Bug Fixes
+
+* **deps:** bump minimum typing-extensions version ([9fe303d](https://github.com/ALbot-developers/api-sdk-py/commit/9fe303df5bd2a499b741017d7dccf94a36e9ce94))
+* **pydantic:** do not pass `by_alias` unless set ([2309226](https://github.com/ALbot-developers/api-sdk-py/commit/230922689585d0f0134acff0804b2183c4b6cf44))
+
+
+### Chores
+
+* **internal:** tweak CI branches ([eb955bc](https://github.com/ALbot-developers/api-sdk-py/commit/eb955bc9fd1be60230b7cf4a100b3b552ed015b1))
+
 ## 0.1.0 (2026-03-11)
 
 Full Changelog: [v0.0.1...v0.1.0](https://github.com/ALbot-developers/api-sdk-py/compare/v0.0.1...v0.1.0)
