@@ -9,7 +9,7 @@ import httpx
 
 from ..types import shard_list_params, shard_post_metrics_params, shard_get_connection_commands_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -126,7 +126,7 @@ class ShardsResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
-            f"/shards/{shard_id}/connection_commands",
+            path_template("/shards/{shard_id}/connection_commands", shard_id=shard_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -166,7 +166,7 @@ class ShardsResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._post(
-            f"/shards/{shard_id}/metrics",
+            path_template("/shards/{shard_id}/metrics", shard_id=shard_id),
             body=maybe_transform(
                 {
                     "connected": connected,
@@ -204,7 +204,7 @@ class ShardsResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._post(
-            f"/shards/{shard_id}/release",
+            path_template("/shards/{shard_id}/release", shard_id=shard_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -311,7 +311,7 @@ class AsyncShardsResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
-            f"/shards/{shard_id}/connection_commands",
+            path_template("/shards/{shard_id}/connection_commands", shard_id=shard_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -351,7 +351,7 @@ class AsyncShardsResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._post(
-            f"/shards/{shard_id}/metrics",
+            path_template("/shards/{shard_id}/metrics", shard_id=shard_id),
             body=await async_maybe_transform(
                 {
                     "connected": connected,
@@ -389,7 +389,7 @@ class AsyncShardsResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._post(
-            f"/shards/{shard_id}/release",
+            path_template("/shards/{shard_id}/release", shard_id=shard_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

@@ -7,7 +7,7 @@ from typing import Dict
 import httpx
 
 from ..._types import Body, Query, Headers, NotGiven, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -68,7 +68,7 @@ class DictResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
-            f"/guilds/{guild_id}/dict",
+            path_template("/guilds/{guild_id}/dict", guild_id=guild_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -99,7 +99,7 @@ class DictResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._delete(
-            f"/guilds/{guild_id}/dict",
+            path_template("/guilds/{guild_id}/dict", guild_id=guild_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -131,7 +131,7 @@ class DictResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._put(
-            f"/guilds/{guild_id}/dict",
+            path_template("/guilds/{guild_id}/dict", guild_id=guild_id),
             body=maybe_transform({"dict": dict}, dict_replace_params.DictReplaceParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -184,7 +184,7 @@ class AsyncDictResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
-            f"/guilds/{guild_id}/dict",
+            path_template("/guilds/{guild_id}/dict", guild_id=guild_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -215,7 +215,7 @@ class AsyncDictResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._delete(
-            f"/guilds/{guild_id}/dict",
+            path_template("/guilds/{guild_id}/dict", guild_id=guild_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -247,7 +247,7 @@ class AsyncDictResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._put(
-            f"/guilds/{guild_id}/dict",
+            path_template("/guilds/{guild_id}/dict", guild_id=guild_id),
             body=await async_maybe_transform({"dict": dict}, dict_replace_params.DictReplaceParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
