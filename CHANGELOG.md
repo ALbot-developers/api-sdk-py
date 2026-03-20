@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.2.0 (2026-03-20)
+
+Full Changelog: [v0.1.1...v0.2.0](https://github.com/ALbot-developers/api-sdk-py/compare/v0.1.1...v0.2.0)
+
+### Features
+
+* **api:** api update ([ab3a673](https://github.com/ALbot-developers/api-sdk-py/commit/ab3a6735434238670cb1c7eb40767f7ee4d2b1a8))
+
+
+### Bug Fixes
+
+* sanitize endpoint path params ([32bbbd6](https://github.com/ALbot-developers/api-sdk-py/commit/32bbbd6c64cc9a0603cf8215378ad6e824c22ce8))
+
 ## 0.1.1 (2026-03-18)
 
 Full Changelog: [v0.1.0...v0.1.1](https://github.com/ALbot-developers/api-sdk-py/compare/v0.1.0...v0.1.1)
