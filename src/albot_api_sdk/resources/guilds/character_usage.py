@@ -7,7 +7,7 @@ from typing import Optional
 import httpx
 
 from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -69,7 +69,7 @@ class CharacterUsageResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
-            f"/guilds/{guild_id}/character_usage",
+            path_template("/guilds/{guild_id}/character_usage", guild_id=guild_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -102,7 +102,7 @@ class CharacterUsageResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._post(
-            f"/guilds/{guild_id}/character_usage",
+            path_template("/guilds/{guild_id}/character_usage", guild_id=guild_id),
             body=maybe_transform(
                 {
                     "standard": standard,
@@ -161,7 +161,7 @@ class AsyncCharacterUsageResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
-            f"/guilds/{guild_id}/character_usage",
+            path_template("/guilds/{guild_id}/character_usage", guild_id=guild_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -194,7 +194,7 @@ class AsyncCharacterUsageResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._post(
-            f"/guilds/{guild_id}/character_usage",
+            path_template("/guilds/{guild_id}/character_usage", guild_id=guild_id),
             body=await async_maybe_transform(
                 {
                     "standard": standard,
