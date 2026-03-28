@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.3.0 (2026-03-28)
+
+Full Changelog: [v0.2.0...v0.3.0](https://github.com/ALbot-developers/api-sdk-py/compare/v0.2.0...v0.3.0)
+
+### Features
+
+* **api:** api update ([2aa61a1](https://github.com/ALbot-developers/api-sdk-py/commit/2aa61a148228c7aa687f7bfe73c88605e0472a4f))
+* **internal:** implement indices array format for query and form serialization ([91948a4](https://github.com/ALbot-developers/api-sdk-py/commit/91948a4d99d45a3a56b780c58e1b1ad7c4c9525d))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([c7786f7](https://github.com/ALbot-developers/api-sdk-py/commit/c7786f7ddb3cb4527bafe20e34252923ff999404))
+* **internal:** update gitignore ([840c12a](https://github.com/ALbot-developers/api-sdk-py/commit/840c12a0d9a389b7ad973cfb6797e82aea6e5f8d))
+
 ## 0.2.0 (2026-03-20)
 
 Full Changelog: [v0.1.1...v0.2.0](https://github.com/ALbot-developers/api-sdk-py/compare/v0.1.1...v0.2.0)
