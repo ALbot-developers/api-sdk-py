@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.2 (2026-04-11)
+
+Full Changelog: [v0.3.1...v0.3.2](https://github.com/ALbot-developers/api-sdk-py/compare/v0.3.1...v0.3.2)
+
+### Bug Fixes
+
+* ensure file data are only sent as 1 parameter ([57ce01c](https://github.com/ALbot-developers/api-sdk-py/commit/57ce01c3a9c609bb08df42a893bd71b4b2c0bb4b))
+
 ## 0.3.1 (2026-04-10)
 
 Full Changelog: [v0.3.0...v0.3.1](https://github.com/ALbot-developers/api-sdk-py/compare/v0.3.0...v0.3.1)
