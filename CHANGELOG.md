@@ -1,5 +1,29 @@
 # Changelog
 
+## 0.4.0 (2026-05-03)
+
+Full Changelog: [v0.3.2...v0.4.0](https://github.com/ALbot-developers/api-sdk-py/compare/v0.3.2...v0.4.0)
+
+### Features
+
+* support setting headers via env ([2b59e68](https://github.com/ALbot-developers/api-sdk-py/commit/2b59e687e8670e6ee34099843992f4b0d0e3db07))
+
+
+### Bug Fixes
+
+* use correct field name format for multipart file arrays ([2abbf04](https://github.com/ALbot-developers/api-sdk-py/commit/2abbf04ecec75dcee281fc078729eafadd119c32))
+
+
+### Performance Improvements
+
+* **client:** optimize file structure copying in multipart requests ([241a556](https://github.com/ALbot-developers/api-sdk-py/commit/241a5566f6badb021985785ceee21309771c91dc))
+
+
+### Chores
+
+* **internal:** more robust bootstrap script ([b5e6e87](https://github.com/ALbot-developers/api-sdk-py/commit/b5e6e877f9ae989bfe3d75796cb4124d5e8498ba))
+* **internal:** reformat pyproject.toml ([848b545](https://github.com/ALbot-developers/api-sdk-py/commit/848b5451b3b7f492354c194f28d53361aeab8544))
+
 ## 0.3.2 (2026-04-11)
 
 Full Changelog: [v0.3.1...v0.3.2](https://github.com/ALbot-developers/api-sdk-py/compare/v0.3.1...v0.3.2)
