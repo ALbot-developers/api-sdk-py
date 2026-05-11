@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.1 (2026-05-11)
+
+Full Changelog: [v0.4.0...v0.4.1](https://github.com/ALbot-developers/api-sdk-py/compare/v0.4.0...v0.4.1)
+
+### Bug Fixes
+
+* **client:** add missing f-string prefix in file type error message ([7896577](https://github.com/ALbot-developers/api-sdk-py/commit/789657772dade393bfbc9ece09a7a25b727d5f99))
+
 ## 0.4.0 (2026-05-03)
 
 Full Changelog: [v0.3.2...v0.4.0](https://github.com/ALbot-developers/api-sdk-py/compare/v0.3.2...v0.4.0)
