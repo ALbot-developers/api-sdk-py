@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.0 (2026-05-12)
+
+Full Changelog: [v0.4.1...v0.5.0](https://github.com/ALbot-developers/api-sdk-py/compare/v0.4.1...v0.5.0)
+
+### Features
+
+* **internal/types:** support eagerly validating pydantic iterators ([9b67a8b](https://github.com/ALbot-developers/api-sdk-py/commit/9b67a8b15e16e704404b228edddd0c381d1fbc4d))
+
 ## 0.4.1 (2026-05-11)
 
 Full Changelog: [v0.4.0...v0.4.1](https://github.com/ALbot-developers/api-sdk-py/compare/v0.4.0...v0.4.1)
