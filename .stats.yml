@@ -1,4 +1,4 @@
 configured_endpoints: 42
-openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/albot/albot-api-sdk-83343ca635507d6899fded6d8cb2042c81ef03ead6b4d0df4282d220b56bc863.yml
-openapi_spec_hash: a56ce6c153cf7837925be97aa478ba17
+openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/albot/albot-api-sdk-b49339e316407cf68c5c433fbf32d78713417e0b388acb71bfbd4e5484b65ac3.yml
+openapi_spec_hash: 95a0ef23047f8682070b2535c5cd4763
 config_hash: cdcae65deb496342d19067f314258060
