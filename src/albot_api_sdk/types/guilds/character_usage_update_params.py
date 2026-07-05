@@ -3,14 +3,20 @@
 from __future__ import annotations
 
 from typing import Optional
-from typing_extensions import TypedDict
+from typing_extensions import Required, TypedDict
 
-from .character_usage_param import CharacterUsageParam
-
-__all__ = ["CharacterUsageUpdateParams"]
+__all__ = ["CharacterUsageUpdateParams", "Standard", "Wavenet"]
 
 
 class CharacterUsageUpdateParams(TypedDict, total=False):
-    standard: Optional[CharacterUsageParam]
+    standard: Optional[Standard]
 
-    wavenet: Optional[CharacterUsageParam]
+    wavenet: Optional[Wavenet]
+
+
+class Standard(TypedDict, total=False):
+    used_characters: Required[int]
+
+
+class Wavenet(TypedDict, total=False):
+    used_characters: Required[int]
