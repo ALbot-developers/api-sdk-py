@@ -19,7 +19,6 @@ from ..._response import (
 from ..._base_client import make_request_options
 from ...types.guilds import character_usage_update_params
 from ...types.plain_api_response import PlainAPIResponse
-from ...types.guilds.character_usage_param import CharacterUsageParam
 from ...types.guilds.character_usage_retrieve_response import CharacterUsageRetrieveResponse
 
 __all__ = ["CharacterUsageResource", "AsyncCharacterUsageResource"]
@@ -80,8 +79,8 @@ class CharacterUsageResource(SyncAPIResource):
         self,
         guild_id: int,
         *,
-        standard: Optional[CharacterUsageParam] | Omit = omit,
-        wavenet: Optional[CharacterUsageParam] | Omit = omit,
+        standard: Optional[character_usage_update_params.Standard] | Omit = omit,
+        wavenet: Optional[character_usage_update_params.Wavenet] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -172,8 +171,8 @@ class AsyncCharacterUsageResource(AsyncAPIResource):
         self,
         guild_id: int,
         *,
-        standard: Optional[CharacterUsageParam] | Omit = omit,
-        wavenet: Optional[CharacterUsageParam] | Omit = omit,
+        standard: Optional[character_usage_update_params.Standard] | Omit = omit,
+        wavenet: Optional[character_usage_update_params.Wavenet] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
