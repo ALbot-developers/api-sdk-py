@@ -76,6 +76,7 @@ class TestSettings:
             read_not_joined_users=True,
             speech_speed=0.1,
             translate=True,
+            voice_clone_mode="off",
         )
         assert_matches_type(PlainAPIResponse, setting, path=["response"])
 
@@ -203,6 +204,7 @@ class TestAsyncSettings:
             read_not_joined_users=True,
             speech_speed=0.1,
             translate=True,
+            voice_clone_mode="off",
         )
         assert_matches_type(PlainAPIResponse, setting, path=["response"])
 

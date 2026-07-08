@@ -31,6 +31,8 @@ class DataSettings(BaseModel):
 
     translate: bool
 
+    voice_clone_mode: Literal["off", "caller", "speaker"]
+
     custom_voice: Optional[str] = None
 
 

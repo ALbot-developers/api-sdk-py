@@ -91,6 +91,7 @@ class SettingsResource(SyncAPIResource):
         read_not_joined_users: Optional[bool] | Omit = omit,
         speech_speed: Optional[float] | Omit = omit,
         translate: Optional[bool] | Omit = omit,
+        voice_clone_mode: Optional[Literal["off", "caller", "speaker"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -129,6 +130,7 @@ class SettingsResource(SyncAPIResource):
                     "read_not_joined_users": read_not_joined_users,
                     "speech_speed": speech_speed,
                     "translate": translate,
+                    "voice_clone_mode": voice_clone_mode,
                 },
                 setting_update_params.SettingUpdateParams,
             ),
@@ -236,6 +238,7 @@ class AsyncSettingsResource(AsyncAPIResource):
         read_not_joined_users: Optional[bool] | Omit = omit,
         speech_speed: Optional[float] | Omit = omit,
         translate: Optional[bool] | Omit = omit,
+        voice_clone_mode: Optional[Literal["off", "caller", "speaker"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -274,6 +277,7 @@ class AsyncSettingsResource(AsyncAPIResource):
                     "read_not_joined_users": read_not_joined_users,
                     "speech_speed": speech_speed,
                     "translate": translate,
+                    "voice_clone_mode": voice_clone_mode,
                 },
                 setting_update_params.SettingUpdateParams,
             ),

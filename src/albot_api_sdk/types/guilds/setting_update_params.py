@@ -32,3 +32,5 @@ class SettingUpdateParams(TypedDict, total=False):
     """Speech speed multiplier"""
 
     translate: Optional[bool]
+
+    voice_clone_mode: Optional[Literal["off", "caller", "speaker"]]
