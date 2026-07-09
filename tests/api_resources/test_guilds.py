@@ -113,6 +113,7 @@ class TestGuilds:
             read_name=True,
             speech_speed=0,
             translate=True,
+            voice_clone_mode="off",
         )
         assert_matches_type(GuildCreateConnectionStatesResponse, guild, path=["response"])
 
@@ -321,6 +322,7 @@ class TestAsyncGuilds:
             read_name=True,
             speech_speed=0,
             translate=True,
+            voice_clone_mode="off",
         )
         assert_matches_type(GuildCreateConnectionStatesResponse, guild, path=["response"])
 
