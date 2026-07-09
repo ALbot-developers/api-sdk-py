@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from typing import Optional
+from typing_extensions import Literal
 
 import httpx
 
@@ -192,6 +193,7 @@ class GuildsResource(SyncAPIResource):
         read_name: Optional[bool] | Omit = omit,
         speech_speed: Optional[float] | Omit = omit,
         translate: Optional[bool] | Omit = omit,
+        voice_clone_mode: Optional[Literal["off", "caller", "speaker"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -224,6 +226,7 @@ class GuildsResource(SyncAPIResource):
                     "read_name": read_name,
                     "speech_speed": speech_speed,
                     "translate": translate,
+                    "voice_clone_mode": voice_clone_mode,
                 },
                 guild_create_connection_states_params.GuildCreateConnectionStatesParams,
             ),
@@ -428,6 +431,7 @@ class AsyncGuildsResource(AsyncAPIResource):
         read_name: Optional[bool] | Omit = omit,
         speech_speed: Optional[float] | Omit = omit,
         translate: Optional[bool] | Omit = omit,
+        voice_clone_mode: Optional[Literal["off", "caller", "speaker"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -460,6 +464,7 @@ class AsyncGuildsResource(AsyncAPIResource):
                     "read_name": read_name,
                     "speech_speed": speech_speed,
                     "translate": translate,
+                    "voice_clone_mode": voice_clone_mode,
                 },
                 guild_create_connection_states_params.GuildCreateConnectionStatesParams,
             ),
