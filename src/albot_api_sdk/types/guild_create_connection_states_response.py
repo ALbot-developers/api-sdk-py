@@ -48,6 +48,8 @@ class DataConnectionStates(BaseModel):
 
     vc_id: int
 
+    voice_clone_mode: Literal["off", "caller", "speaker"]
+
     wavenet_voice: str
 
     sync_count: Optional[int] = None

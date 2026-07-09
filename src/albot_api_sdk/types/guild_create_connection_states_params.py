@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import Optional
-from typing_extensions import Required, TypedDict
+from typing_extensions import Literal, Required, TypedDict
 
 __all__ = ["GuildCreateConnectionStatesParams"]
 
@@ -26,3 +26,5 @@ class GuildCreateConnectionStatesParams(TypedDict, total=False):
     speech_speed: Optional[float]
 
     translate: Optional[bool]
+
+    voice_clone_mode: Optional[Literal["off", "caller", "speaker"]]
