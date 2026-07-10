@@ -5,13 +5,19 @@ from __future__ import annotations
 from typing import Optional
 from typing_extensions import Required, TypedDict
 
-__all__ = ["CharacterUsageUpdateParams", "Standard", "Wavenet"]
+__all__ = ["CharacterUsageUpdateParams", "ClonedVoice", "Standard", "Wavenet"]
 
 
 class CharacterUsageUpdateParams(TypedDict, total=False):
+    cloned_voice: Optional[ClonedVoice]
+
     standard: Optional[Standard]
 
     wavenet: Optional[Wavenet]
+
+
+class ClonedVoice(TypedDict, total=False):
+    used_characters: Required[int]
 
 
 class Standard(TypedDict, total=False):
