@@ -79,6 +79,7 @@ class CharacterUsageResource(SyncAPIResource):
         self,
         guild_id: int,
         *,
+        cloned_voice: Optional[character_usage_update_params.ClonedVoice] | Omit = omit,
         standard: Optional[character_usage_update_params.Standard] | Omit = omit,
         wavenet: Optional[character_usage_update_params.Wavenet] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -104,6 +105,7 @@ class CharacterUsageResource(SyncAPIResource):
             path_template("/guilds/{guild_id}/character_usage", guild_id=guild_id),
             body=maybe_transform(
                 {
+                    "cloned_voice": cloned_voice,
                     "standard": standard,
                     "wavenet": wavenet,
                 },
@@ -171,6 +173,7 @@ class AsyncCharacterUsageResource(AsyncAPIResource):
         self,
         guild_id: int,
         *,
+        cloned_voice: Optional[character_usage_update_params.ClonedVoice] | Omit = omit,
         standard: Optional[character_usage_update_params.Standard] | Omit = omit,
         wavenet: Optional[character_usage_update_params.Wavenet] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -196,6 +199,7 @@ class AsyncCharacterUsageResource(AsyncAPIResource):
             path_template("/guilds/{guild_id}/character_usage", guild_id=guild_id),
             body=await async_maybe_transform(
                 {
+                    "cloned_voice": cloned_voice,
                     "standard": standard,
                     "wavenet": wavenet,
                 },

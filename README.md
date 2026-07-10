@@ -126,9 +126,9 @@ client = AlbotAPISDK()
 
 plain_api_response = client.guilds.character_usage.update(
     guild_id=0,
-    standard={"used_characters": 0},
+    cloned_voice={"used_characters": 0},
 )
-print(plain_api_response.standard)
+print(plain_api_response.cloned_voice)
 ```
 
 ## Handling errors

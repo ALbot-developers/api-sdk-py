@@ -65,6 +65,7 @@ class TestCharacterUsage:
     def test_method_update_with_all_params(self, client: AlbotAPISDK) -> None:
         character_usage = client.guilds.character_usage.update(
             guild_id=0,
+            cloned_voice={"used_characters": 0},
             standard={"used_characters": 0},
             wavenet={"used_characters": 0},
         )
@@ -149,6 +150,7 @@ class TestAsyncCharacterUsage:
     async def test_method_update_with_all_params(self, async_client: AsyncAlbotAPISDK) -> None:
         character_usage = await async_client.guilds.character_usage.update(
             guild_id=0,
+            cloned_voice={"used_characters": 0},
             standard={"used_characters": 0},
             wavenet={"used_characters": 0},
         )
