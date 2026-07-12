@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.7.0 (2026-07-12)
+
+Full Changelog: [v0.6.0...v0.7.0](https://github.com/ALbot-developers/api-sdk-py/compare/v0.6.0...v0.7.0)
+
+### Features
+
+* **api:** api update ([e529a4a](https://github.com/ALbot-developers/api-sdk-py/commit/e529a4a658751db1ead55d5b3dd87e0ddbddb23d))
+* **api:** api update ([ffd1016](https://github.com/ALbot-developers/api-sdk-py/commit/ffd1016b07e208e95a9a4617445151ad13499f24))
+* **api:** api update ([97919bd](https://github.com/ALbot-developers/api-sdk-py/commit/97919bd10048a2d9df52823f4d30b10d0054c2c0))
+
 ## 0.6.0 (2026-07-05)
 
 Full Changelog: [v0.5.0...v0.6.0](https://github.com/ALbot-developers/api-sdk-py/compare/v0.5.0...v0.6.0)
