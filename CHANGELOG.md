@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.0 (2026-07-23)
+
+Full Changelog: [v0.7.0...v0.8.0](https://github.com/ALbot-developers/api-sdk-py/compare/v0.7.0...v0.8.0)
+
+### Features
+
+* **stlc:** configurable CI runner and private-production-repo support in workflow templates ([458bda7](https://github.com/ALbot-developers/api-sdk-py/commit/458bda70baf4646d9abf2e528b453002cec6daad))
+
 ## 0.7.0 (2026-07-12)
 
 Full Changelog: [v0.6.0...v0.7.0](https://github.com/ALbot-developers/api-sdk-py/compare/v0.6.0...v0.7.0)
